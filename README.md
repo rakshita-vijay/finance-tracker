@@ -1,3 +1,4 @@
+```python
 finance_tracker/
 ├── core/                  # Business logic (OOP)
 │   ├── __init__.py
@@ -13,3 +14,4 @@ finance_tracker/
 │   └── visualizations.py  # Matplotlib/Seaborn
 ├── data/                  # CSV storage directory
 └── tests/                 # Unit tests
+```

@@ -1,4 +1,4 @@
-```python
+```bash
 finance_tracker/
 ├── core/                  # Business logic (OOP)
 │   ├── __init__.py

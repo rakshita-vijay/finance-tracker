@@ -92,15 +92,15 @@ def download_file(file_to_download = None):
     unzippy.extractall(path = downloads_path)
     unzippy.close()
 
-    # deletion of zip files
-    # curr_dir = os.getcwd()
-
-    # for folders, _, files in os.walk(curr_dir):
-    #   for file in files:
-    #     if re.search(r'^zippy_', file):
-    #       os.remove(os.path.join(folders, file))
-
     print(f"\nDownload of file: {only_file_name} complete! Check your downloads folder :)")
+
+  # deletion of zip files
+  curr_dir = os.getcwd()
+
+  for folders, _, files in os.walk(curr_dir):
+    for file in files:
+      if re.search(r'^zippy_', file):
+        os.remove(os.path.join(folders, file))
 
 if __name__ == "__main__":
   # line_demarcator = "\n{}\n".format("~" * 120)

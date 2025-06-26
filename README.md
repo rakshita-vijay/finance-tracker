@@ -15,3 +15,19 @@ finance_tracker/
 ├── data/                  # CSV storage directory
 └── tests/                 # Unit tests
 ```
+
+---
+
+end:
+
+downloads_folder = ''
+
+f = open('file_locations.txt', 'w')
+f.write("CSV file location: {}".format(csv_file_loc))
+f.close()
+
+f = open('file_locations.txt', 'a')
+f.write("PDF file location: {}".format(pdf_file_loc))
+f.close()
+
+f = open("transactions.csv", encoding = "utf-8")

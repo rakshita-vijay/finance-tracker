@@ -1,3 +1,2 @@
-python3
-csv
 pypdf
+crewai

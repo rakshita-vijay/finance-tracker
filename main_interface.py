@@ -1,6 +1,6 @@
 import os, sys, math, re, csv, pypdf, datetime
 
-from core.budget import changeBudget
+from core.budget import changeBudget, displayBudget
 # from types_of_methods.csv_saver import save_as_csv
 # from types_of_methods.pdf_saver import save_as_pdf
 
@@ -27,6 +27,9 @@ def main():
 
   if choice == 'n':
     changeBudget()
+  else:
+    bl = get_budgets_list()
+    displayBudget(bl)
 
   frs = get_budgets_list()
 
@@ -35,8 +38,6 @@ def main():
     'yearly': frs[1].strip('yearly = ')
   }
 
-  print("Budgets:", budgets)
-
   curr_csv = ""
   curr_pdf = ""
 
@@ -44,22 +45,23 @@ def main():
     for file in files:
       if file[0:3] == 'csv':
         curr_csv = ''.join(os.path.join(os.getcwd(), os.path.join(folders, file)).split('./'))
-      else:
+      elif file[0:3] == 'pdf':
         curr_pdf = ''.join(os.path.join(os.getcwd(), os.path.join(folders, file)).split('./'))
 
   todayyy = datetime.datetime.today()
 
-  # checker data
-  csv_file = open(curr_csv, mode='w', newline='')
-  csv_writer = csv.writer(csv_file, delimiter=',')
-
-  csv_writer.writerow(['col1','col2','col3'])
-  csv_writer.writerows([['a','b','c'], ['d','e','f'], ['g','h','i']])
-  csv_file.close()
+  # csv_fp = open(curr_csv, 'w', encoding='utf-8')
+  # csv_writer = csv.writer(csv_fp)
+  # csv_writer.writerow(['S.NO', 'DATE', 'DESCRIPTION', 'AMOUNT', 'NOTES'])
+  # # csv_writer.writerows([['S.NO', 'DATE', 'DESCRIPTION', 'AMOUNT', 'NOTES']])
+  # csv_fp.close()
 
   # transactions
-  print("Current transactions: ")
+  print("\nCurrent transactions: ")
   display_csv_content(curr_csv)
+
+
+
 
 
 

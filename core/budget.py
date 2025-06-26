@@ -3,7 +3,7 @@ import re, math
 def displayBudget(budget_list):
   mb = re.search(r'monthly = (\d+)', budget_list[0].strip()).group(1)
   yb = re.search(r'yearly = (\d+)', budget_list[1].strip()).group(1)
-  print("\nMonthly budget = {}".format(mb))
+  print("Monthly budget = {}".format(mb))
   print("Yearly budget = {}".format(yb))
 
 def changeBudget():
@@ -31,15 +31,14 @@ def changeBudget():
     yearly_budget = math.floor(budget * 12)
     # print("\n{bt} budget = {b}".format(bt = budget_type.title(), b = monthly_budget))
     # print("Yearly budget = {}".format(yearly_budget))
-    bl = f"monthly = {monthly_budget}, yearly = {yearly_budget}".split(', ')
-    displayBudget(bl)
   else:
     monthly_budget = math.floor(budget / 12)
     yearly_budget = budget
     # print("\nMonthly budget = {}".format(monthly_budget))
     # print("{bt} budget = {b}".format(bt = budget_type.title(), b = yearly_budget))
-    bl = f"monthly = {monthly_budget}, yearly = {yearly_budget}".split(', ')
-    displayBudget(bl)
+
+  bl = f"monthly = {monthly_budget}, yearly = {yearly_budget}".split(', ')
+  displayBudget(bl)
 
   f = open("/Users/rakshita/dev/rakshita/finance-tracker/core/default_budget.txt", 'w')
   f.write(f"monthly = {monthly_budget}, yearly = {yearly_budget}")

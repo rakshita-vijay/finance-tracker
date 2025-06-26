@@ -43,9 +43,6 @@ def choice_to_change_or_keep_current_budget():
     print("\n{}".format("~" * 120))
   else:
     print("\n{}".format("~" * 120))
-  # else:
-  #   bl = get_budgets_list()
-  #   displayBudget(bl)
 
 def main():
   print("\nWhat are you here to do?")

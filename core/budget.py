@@ -3,8 +3,11 @@ import re, math
 def displayBudget(budget_list):
   mb = re.search(r'monthly = (\d+)', budget_list[0].strip()).group(1)
   yb = re.search(r'yearly = (\d+)', budget_list[1].strip()).group(1)
-  print("Monthly budget = {}".format(mb))
-  print("Yearly budget = {}".format(yb))
+
+  print("{} budget = {}".format('monthly'.title(), mb))
+
+  budget_type = 'YEARLY'
+  print("{bt} budget = {b}".format(bt = budget_type.title(), b = yb))
 
 def changeBudget():
   print()
@@ -18,7 +21,7 @@ def changeBudget():
   print()
 
   repeat = 'yes'
-  while repeat == 'yes':
+  while repeat == 'yes' or budget < 0:
     try:
       budget = int(input(f"Enter your {budget_type} budget: "))
       repeat = 'no'
@@ -33,6 +36,8 @@ def changeBudget():
     # print("Yearly budget = {}".format(yearly_budget))
   else:
     monthly_budget = math.floor(budget / 12)
+    # if monthly_budget == 0:
+    #   monthly_budget = float(budget / 12)
     yearly_budget = budget
     # print("\nMonthly budget = {}".format(monthly_budget))
     # print("{bt} budget = {b}".format(bt = budget_type.title(), b = yearly_budget))

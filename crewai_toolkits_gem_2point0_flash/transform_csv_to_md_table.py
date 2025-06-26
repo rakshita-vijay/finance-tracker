@@ -1,7 +1,8 @@
-def transformed_table(data_lines):
-  import os, sys
-  from crewai import Agent, Task, Crew, LLM
 
+import os, sys
+from crewai import Agent, Task, Crew, LLM
+
+def transformed_table(data_lines):
   GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
   if not GOOGLE_API_KEY:
     raise ValueError("\nGOOGLE_API_KEY environment variable not set. \nPlease set it as a secret in your GitHub repository. \nIf in command line/terminal, run the command: export GOOGLE_API_KEY='YOUR_API_KEY' ")

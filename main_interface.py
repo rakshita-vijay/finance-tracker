@@ -66,6 +66,9 @@ def main():
 
   print(l_and_r_line_demarcator)
 
+  pretti_tabel = create_and_format_pretty_table()
+  update_txt_file(pretti_tabel)
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # Add Transaction
@@ -127,9 +130,6 @@ def main():
       print("| Transactions successfully added into the csv file! :) |")
       print("-" * len("| Transactions successfully added into the csv file! :) |"))
 
-    pretti_tabel = create_and_format_pretty_table()
-    update_txt_file(pretti_tabel)
-
     print(l_only_line_demarcator)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -152,9 +152,7 @@ def main():
     #   print(table)
 
     pt = create_and_format_pretty_table()
-
     print(pt)
-
     update_txt_file(pt)
 
     print(l_and_r_line_demarcator)

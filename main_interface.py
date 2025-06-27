@@ -6,7 +6,7 @@ from core.budget import changeBudget, displayBudget
 
 from download_to_device import download_file
 
-from file_methods.csv_file_methods import display_csv_content, find_csv_file_location, get_trans_line_details
+from file_methods.csv_file_methods import display_csv_content, find_csv_file_location, get_trans_line_details, add_to_csv
 
 l_only_line_demarcator = "\n{}".format("~" * 120)
 r_only_line_demarcator = "{}\n".format("~" * 120)
@@ -56,11 +56,14 @@ def main():
       repeat = 'yes'
       print("\nInvalid input. Please enter a valid integer choice.")
 
+  print(l_and_r_line_demarcator)
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # Add Transaction
   if purpose_of_visit == 1:
 
+    num_of_trans = 1
     thro_err = True
     while thro_err == True:
       try:
@@ -71,27 +74,37 @@ def main():
         # thro_err = True
         print("Invalid numbers of transactions. Retry.")
 
+    print()
     trans_deets = []
     for trans_num in range(num_of_trans):
-      print(f"Adding transaction #{trans_num+1}: ")
+      print(f"ADDING TRANSACTION #{trans_num+1}: ")
+      print("-" * len(f"ADDING TRANSACTION #{trans_num+1}"))
+
       trans_deets.append(get_trans_line_details())
+
+      print()
+      print("-" * len(f"| TRANSACTION #{trans_num+1} HAS BEEN RECORDED! |"))
+      print(f"| TRANSACTION #{trans_num+1} HAS BEEN RECORDED! |")
+      print("-" * len(f"| TRANSACTION #{trans_num+1} HAS BEEN RECORDED! |"))
+      print()
 
     # ensures it is a list of lists
 
     if num_of_trans == 0:
       pass
     else:
+      add_to_csv(trans_deets)
       todayyy = datetime.datetime.today()
-      add_to_csv(trans_deets, len(trans_deets))
 
-
-    # not finished yet
+      print("-" * len("| Transactions successfully added into the csv file! :) |"))
+      print("| Transactions successfully added into the csv file! :) |")
+      print("-" * len("| Transactions successfully added into the csv file! :) |"))
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # View Spending
   elif purpose_of_visit == 2:
-    print(l_and_r_line_demarcator)
+    # print(l_and_r_line_demarcator)
 
     bud_list = get_budgets_list()
     displayBudget(bud_list)
@@ -111,6 +124,7 @@ def main():
   elif purpose_of_visit == 3:
     pass
     # have a choice if they have accidentally pressed 3
+    # remove extra \n (account for it)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -126,7 +140,7 @@ def main():
 
     # add the choice to also download report
     dl_or_not = 'd'
-    print("\nWould you like to download one of the two listed below?")
+    print("Would you like to download one of the two listed below?")
     print("1. the csv file of your transactions")
     print("2. any other file in this directory")
 

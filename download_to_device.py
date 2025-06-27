@@ -1,4 +1,4 @@
-import os, re, datetime, csv, zipfile
+import os, sys, re, datetime, csv, zipfile
 from file_methods.csv_file_methods import find_csv_file_location
 from file_methods.csv_file_methods import extract_csv_content
 
@@ -103,9 +103,13 @@ def download_file(file_to_download = None):
         os.remove(os.path.join(folders, file))
 
 if __name__ == "__main__":
+  if len(sys.argv) > 1:
+    download_file(sys.argv[1])
+  else:
+    download_file()
   # line_demarcator = "\n{}\n".format("~" * 120)
 
-  download_file()
+  # download_file()
   # print(line_demarcator)
 
   # download_file("tbh")

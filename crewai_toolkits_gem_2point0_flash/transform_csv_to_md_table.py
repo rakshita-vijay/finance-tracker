@@ -15,7 +15,7 @@ def transformed_table(data_lines):
 
   table_generator = Agent(
     role = "2D Array to Table Converter",
-    goal = "Given a 2D Array (list of lists) - {csv_data} - you must convert into a table of 'markdown' format, with spaces and pipes (|).",
+    goal = "Given a 2D Array (list of lists) - {csv_data} - you must convert into a table of 'markdown'-like format, with spaces and pipes (|).",
     backstory = "Automatic spacer and demarcator using spaces and |",
     llm = llm,
     verbose = False
@@ -24,12 +24,14 @@ def transformed_table(data_lines):
   table_maker = Task(
     name = "Table Converter",
     agent = table_generator,
-    description = '''Given a 2D Array (list of lists) - {csv_data} - you must convert into a table of 'markdown' format, with spaces and pipes (|). The width of each column will be the width of the longest value in that specific column.
+    description = '''Given a 2D Array (list of lists) - {csv_data} - you must convert into a table of 'markdown'-like format, with spaces and pipes (|). The width of each column will be the width of the longest value in that specific column.
     Return the visually pleasing, appropriately spaced table of values, not the python script used to convert it.
     Give it in the format:
     | S.NO |    DATE    | DESCRIPTION | AMOUNT | NOTES |
     |------|------------|-------------|--------|-------|
     |  1   | MM/DD/YYYY |     Abc     |  1234  |  Xyz  |
+    |------|------------|-------------|--------|-------|
+    |  2   | MM/DD/YYYY |    dAbce    |   23   | aXyzb |
     |------|------------|-------------|--------|-------|
     ''',
     expected_output = "Visually pleasing, appropriately spaced table of values."

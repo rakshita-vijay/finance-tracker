@@ -8,6 +8,10 @@ from download_to_device import download_file
 
 from file_methods.csv_file_methods import display_csv_content, find_csv_file_location, get_trans_line_details, add_to_csv
 
+from file_methods.pdf_file_methods import find_pdf_file_location
+
+from crewai_toolkits_gem_2point0_flash.generate_report_from_csv import gen_report
+
 l_only_line_demarcator = "\n{}".format("~" * 120)
 r_only_line_demarcator = "{}\n".format("~" * 120)
 l_and_r_line_demarcator = "\n{}\n".format("~" * 120)
@@ -94,7 +98,26 @@ def main():
       pass
     else:
       add_to_csv(trans_deets)
-      todayyy = datetime.datetime.today()
+      rn_ts = datetime.datetime.today()
+
+      # renaming the .csv file
+      new_name = f"csv_{rn_ts.day}_{rn_ts.month}_{rn_ts.year}_{rn_ts.hour}_{rn_ts.minute}_{rn_ts.second}.csv"
+
+      curr_fp = find_csv_file_location()
+      # /Users/rakshita/dev/rakshita/finance-tracker/saved_files/csv_26_06_2025_3_48_10.csv
+      dir_path = os.path.join(curr_fp.split('saved_files/')[0], 'saved_files/')
+      new_fp = os.path.join(dir_path, new_name)
+
+      os.rename(curr_fp, new_fp)
+
+      # renaming the .pdf file
+      new_name = f"pdf_{rn_ts.day}_{rn_ts.month}_{rn_ts.year}_{rn_ts.hour}_{rn_ts.minute}_{rn_ts.second}.pdf"
+
+      curr_fp = find_pdf_file_location()
+      dir_path = os.path.join(curr_fp.split('saved_files/')[0], 'saved_files/')
+      new_fp = os.path.join(dir_path, new_name)
+
+      os.rename(curr_fp, new_fp)
 
       print("-" * len("| Transactions successfully added into the csv file! :) |"))
       print("| Transactions successfully added into the csv file! :) |")
@@ -122,9 +145,15 @@ def main():
 
   # Generate Report
   elif purpose_of_visit == 3:
-    pass
-    # have a choice if they have accidentally pressed 3
+    rep_ch = input("Would you like to generate a report / analysis of your transactions? Enter 'y' for yes and 'n' for no: ")
+    while rep_ch.lower()[0] != 'y' and rep_ch.lower()[0] != 'n':
+      rep_ch = input("Invalid choice. Please enter 'y' for yes and 'n' for no: ")
+
+    if rep_ch.lower()[0] == 'y':
+      gen_report(find_csv_file_location())
+
     # remove extra \n (account for it)
+    # ask if they want to download the report
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -192,45 +221,5 @@ def main():
     print("Exiting...")
     sys.exit(1)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-  bud_list = get_budgets_list()
-
-  budgets = {
-    'monthly': bud_list[0].strip('monthly = '),
-    'yearly': bud_list[1].strip('yearly = ')
-  }
-
-  # csv_fp = open(curr_csv, 'w', encoding='utf-8')
-  # csv_writer = csv.writer(csv_fp)
-  # csv_writer.writerow(['S.NO', 'DATE', 'DESCRIPTION', 'AMOUNT', 'NOTES'])
-  # # csv_writer.writerows([['S.NO', 'DATE', 'DESCRIPTION', 'AMOUNT', 'NOTES']])
-  # csv_fp.close()
-
-'''
-
-
-
 if __name__ == "__main__":
   main()
-
-
-
-'''
-under budget or over budget
-show budget left
-'''

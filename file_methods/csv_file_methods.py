@@ -1,5 +1,5 @@
 import os, csv, sys, datetime
-from crewai_toolkits_gem_2point0_flash.transform_csv_to_md_table import transformed_table
+from crewai_toolkits_gem_2point0_flash.transform_csv_to_md_table import transformed_table, get_max_width_of_each_column
 
 def find_csv_file_location():
   curr_csv = ""
@@ -88,10 +88,10 @@ def get_trans_line_details():
   thro_err = True
   while thro_err == True:
     try:
-      resp = input("Enter the description as text (<70 characters): ")
+      resp = input("Enter the description as text (<60 characters): ")
       stripped_resp = resp.strip().strip("'").strip('"').strip()
 
-      if len(stripped_resp) > 70:
+      if len(stripped_resp) > 60:
         raise Exception
       else:
         thro_err = False
@@ -121,10 +121,10 @@ def get_trans_line_details():
   thro_err = True
   while thro_err == True:
     try:
-      resp = input("Enter notes (if there are any) as text (<70 characters): ")
+      resp = input("Enter notes (if there are any) as text (<60 characters): ")
       stripped_resp = resp.strip().strip("'").strip('"').strip()
 
-      if len(stripped_resp) > 70:
+      if len(stripped_resp) > 60:
         raise Exception
       else:
         thro_err = False
@@ -155,6 +155,6 @@ def add_to_csv(list_of_lists):
 
   csv_file.close()
 
-
-# def add_lines_to_csv(<list of variables or cell values>):
-#   pass
+def get_max_width_of_each_column_in_csv(csv_dayta = extract_csv_content()):
+  max_width_of_each_column_in_csv = get_max_width_of_each_column(csv_dayta)
+  return max_width_of_each_column_in_csv

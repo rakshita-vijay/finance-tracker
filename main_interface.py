@@ -130,6 +130,8 @@ def main():
     pretti_tabel = create_and_format_pretty_table()
     update_txt_file(pretti_tabel)
 
+    print(l_only_line_demarcator)
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # View Spending
@@ -193,13 +195,13 @@ def main():
     print("4. the md file of your report")
     print("5. any other file in this directory")
 
-    while dl_or_not.lower()[0] not in ['y', 'n', '1', '2']:
+    while dl_or_not.lower()[0] not in ['y', 'n', '1', '2', '3', '4', '5']:
       dl_or_not = input("\nEnter 'y'/'1'/'2'/'3'/'4'/'5' for yes/specific and 'n' for no: ")
 
     if dl_or_not.lower()[0] == 'y':
-      num_ch = '0'
-      while num_ch.lower()[0] not in ['1', '2', '3', '4', '5']:
-        num_ch = input("\nEnter '1' for csv and '2' for other: ")
+      dl_or_not = '0'
+      while dl_or_not.lower()[0] not in ['1', '2', '3', '4', '5']:
+        dl_or_not = input("\nEnter a number from 1 to 5: ")
 
     if dl_or_not.lower()[0] == '1':
       print(l_and_r_line_demarcator)
@@ -225,6 +227,8 @@ def main():
       dl_fp = input("\nEnter file path or name in this directory: ")
       print(l_only_line_demarcator)
       download_file(dl_fp)
+
+    print(l_only_line_demarcator)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

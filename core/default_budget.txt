@@ -1,1 +1,1 @@
-monthly = 5, yearly = 60
+monthly = 7, yearly = 84

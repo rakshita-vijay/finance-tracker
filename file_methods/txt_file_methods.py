@@ -1,6 +1,7 @@
-import os
+import os, csv
 from prettytable import PrettyTable
 from file_methods.csv_file_methods import find_csv_file_location
+from file_methods.pdf_file_methods import txt_to_pdf
 
 def find_txt_file_location():
   curr_txt = ""
@@ -13,7 +14,8 @@ def find_txt_file_location():
 
   return curr_txt
 
-def create_and_format_pretty_table(curr_csv = find_csv_file_location()):
+def create_and_format_pretty_table():
+  curr_csv = find_csv_file_location()
   table = PrettyTable()
 
   # Read CSV
@@ -50,6 +52,11 @@ def update_txt_file(table = create_and_format_pretty_table()):
   new_fp = os.path.join(dir_path, new_name)
 
   os.rename(curr_fp, new_fp)
+
+  new_pdf_name = f"pdf_{rn_tsmp}.pdf"
+  new_pdf_fp = os.path.join(dir_path, new_pdf_name)
+
+  txt_to_pdf(new_fp, new_pdf_fp)
 
 # add functionality: if txt file is updated, pdf file is automatically updated
 # link another func here

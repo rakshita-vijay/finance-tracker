@@ -1,3 +1,4 @@
 pypdf
 crewai
 prettytable
+fpdf

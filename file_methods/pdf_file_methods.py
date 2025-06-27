@@ -1,6 +1,5 @@
-# import pypdf
-
 import os
+from fpdf import FPDF
 
 def find_pdf_file_location():
   curr_pdf = ""
@@ -13,7 +12,14 @@ def find_pdf_file_location():
 
   return curr_pdf
 
-# def save_as_pdf(<list of variables or cell values>):
-#   pass
-#   csv to pdf, basically
-#   import, then call this function from pdf_file_saving.py
+def txt_to_pdf(txt_file, pdf_file):
+  pdf = FPDF()
+  pdf.add_page()
+  pdf.set_font("Arial", size=12)
+
+  with open(txt_file, "r", encoding="utf-8") as f:
+    for line in f:
+      pdf.cell(0, 10, txt=line.strip(), ln=True)
+
+  pdf.output(pdf_file)
+  # print(f"PDF saved to {pdf_file}")

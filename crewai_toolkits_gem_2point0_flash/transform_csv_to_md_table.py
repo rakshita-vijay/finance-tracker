@@ -35,7 +35,7 @@ def transformed_table(data_lines):
     Each column should be as wide as the values mentioned against the column name in {maximum_width_of_each_column}.
     Do not use Markdown table syntax. Do not center-align any columns.''',
 
-    backstory = "You are an expert at formatting data into readable, fixed-width ASCII tables for terminal or plain text viewing. You never use Markdown table syntax, only ASCII with pipes and spaces for padding and alignment.",
+    backstory = "You are an expert at formatting data into readable, fixed-width ASCII tables for terminal or plain text viewing. You only use ASCII with pipes and spaces for padding and alignment.",
 
     llm = llm,
     verbose = False
@@ -49,7 +49,6 @@ def transformed_table(data_lines):
     Each column should be as wide as the values mentioned against the column name in {maximum_width_of_each_column}.
     Left-align all text columns (S.NO, DATE, DESCRIPTION, NOTES). Right-align all numeric columns (AMOUNT, S.NO if numeric).
     Pad each cell with spaces so that all rows and columns align perfectly.
-    Do NOT use Markdown table syntax (no |---|---|).
     Instead, produce a classic ASCII table like:
     | S.NO |    DATE    | DESCRIPTION            | AMOUNT | NOTES          |
     |------|------------|------------------------|--------|----------------|
@@ -58,7 +57,7 @@ def transformed_table(data_lines):
     | 3    | 12/31/2025 | Invalid date corrected |    0.0 | winchesterlove |
     ''',
 
-    expected_output = "A properly aligned ASCII table as described above, not in Markdown format, with left-aligned text and right-aligned numbers."
+    expected_output = "A properly aligned ASCII table as described above, with left-aligned text and right-aligned numbers."
   )
 
   crewww = Crew(

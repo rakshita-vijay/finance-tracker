@@ -14,8 +14,8 @@ def gen_report(csv_file_loc_full_path = find_csv_file_location()):
   )
 
   data_extractor = Agent(
-    role = "",
-    goal = "",
+    role = "Information extractor from .csv file",
+    goal = "You are given the full path of a csv file - {full_file_path}. You must extract the text in the csv file into a list of lists, and then render it into a ",
     backstory = "",
     verbose = True,
     llm = llm

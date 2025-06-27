@@ -12,6 +12,9 @@ from file_methods.pdf_file_methods import find_pdf_file_location
 
 from crewai_toolkits_gem_2point0_flash.generate_report_from_csv import gen_report
 
+# from prettytable import from_csv
+from prettytable import PrettyTable
+
 l_only_line_demarcator = "\n{}".format("~" * 120)
 r_only_line_demarcator = "{}\n".format("~" * 120)
 l_and_r_line_demarcator = "\n{}\n".format("~" * 120)
@@ -136,7 +139,30 @@ def main():
     curr_csv = find_csv_file_location()
 
     print("Transactions to date: ")
-    display_csv_content(curr_csv)
+    # display_csv_content(curr_csv)
+
+    # with open(curr_csv, "r") as fp:
+    #   table = from_csv(fp)
+    #   table.align = "l"  # left align all columns
+    #   print(table)
+
+    table = PrettyTable()
+
+    # Read CSV
+    with open(curr_csv, "r") as f:
+      reader = csv.reader(f)
+      headers = next(reader)
+      table.field_names = headers
+      for row in reader:
+        table.add_row(row)
+
+    alignments = {"S.NO": "c", "DATE": "c", "DESCRIPTION": "l", "AMOUNT": "r", "NOTES": "l"}
+
+    # Set custom alignment per column
+    for fn in table.field_names:
+      table.align[fn] = alignments[fn]
+
+    print(table)
 
     print(l_and_r_line_demarcator)
     purpose_of_visit = 4

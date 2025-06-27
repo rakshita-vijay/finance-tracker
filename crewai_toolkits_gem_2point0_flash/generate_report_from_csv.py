@@ -13,27 +13,12 @@ def gen_report(csv_file_loc_full_path = find_csv_file_location()):
     api_key=GOOGLE_API_KEY
   )
 
-  data_extractor = Agent(
-    role = "Information extractor from .csv file",
-    goal = "You are given the full path of a csv file - {full_file_path}. You must extract the text in the csv file into a list of lists, and then render it into a ",
-    backstory = "",
-    verbose = True,
-    llm = llm
-  )
-
   rep_generator = Agent(
     role = "",
     goal = "",
     backstory = "",
     verbose = True,
     llm = llm
-  )
-
-  data_extraction = Task(
-    name = "",
-    agent = rep_generator,
-    description = "",
-    expected_output = ""
   )
 
   to_do_rep_generation = Task(
@@ -44,8 +29,8 @@ def gen_report(csv_file_loc_full_path = find_csv_file_location()):
   )
 
   crewww = Crew(
-    agents = [data_extractor, rep_generator],
-    tasks = [data_extraction, to_do_rep_generation],
+    agents = [rep_generator],
+    tasks = [to_do_rep_generation],
     process = 'sequential',
     verbose = True,
     chat_llm = llm

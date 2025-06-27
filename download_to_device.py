@@ -35,7 +35,7 @@ def download_file(file_to_download = None):
     try:
       extension = re.search(r'\.([^.]+)$', only_file_name).group(1)
     except:
-      print("Cannot download file as it is not a csv or py :(")
+      print("Cannot download file as it is not a csv, py, or txt :(")
       print("Thus, downloading csv file :)")
       only_file_name = find_csv_file_location()
       extension = 'csv'
@@ -71,7 +71,7 @@ def download_file(file_to_download = None):
 
     print(f"\nDownload of file: {file_name_in_downloads} complete! Check your downloads folder :)")
 
-  else: # if extension == 'py'
+  else: # if extension == 'py' or 'txt'
     zipper_file_name = f"zippy_{rn}.zip"
 
     # finding full path

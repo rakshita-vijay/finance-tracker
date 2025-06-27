@@ -15,5 +15,5 @@ def find_pdf_file_location():
 
 # def save_as_pdf(<list of variables or cell values>):
 #   pass
-#   pdf to pdf, basically
+#   csv to pdf, basically
 #   import, then call this function from pdf_file_saving.py

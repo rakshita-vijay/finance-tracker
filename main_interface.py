@@ -9,6 +9,7 @@ from download_to_device import download_file
 from file_methods.csv_file_methods import display_csv_content, find_csv_file_location, get_trans_line_details, add_to_csv
 
 from file_methods.pdf_file_methods import find_pdf_file_location
+from file_methods.txt_file_methods import find_txt_file_location, update_txt_file, create_and_format_pretty_table
 
 from crewai_toolkits_gem_2point0_flash.generate_report_from_csv import gen_report
 
@@ -126,11 +127,13 @@ def main():
       print("| Transactions successfully added into the csv file! :) |")
       print("-" * len("| Transactions successfully added into the csv file! :) |"))
 
+    pretti_tabel = create_and_format_pretty_table()
+    update_txt_file(pretti_tabel)
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # View Spending
   elif purpose_of_visit == 2:
-    # print(l_and_r_line_demarcator)
 
     bud_list = get_budgets_list()
     displayBudget(bud_list)
@@ -146,23 +149,11 @@ def main():
     #   table.align = "l"  # left align all columns
     #   print(table)
 
-    table = PrettyTable()
+    pt = create_and_format_pretty_table()
 
-    # Read CSV
-    with open(curr_csv, "r") as f:
-      reader = csv.reader(f)
-      headers = next(reader)
-      table.field_names = headers
-      for row in reader:
-        table.add_row(row)
+    print(pt)
 
-    alignments = {"S.NO": "c", "DATE": "c", "DESCRIPTION": "l", "AMOUNT": "r", "NOTES": "l"}
-
-    # Set custom alignment per column
-    for fn in table.field_names:
-      table.align[fn] = alignments[fn]
-
-    print(table)
+    update_txt_file(pt)
 
     print(l_and_r_line_demarcator)
     purpose_of_visit = 4
@@ -195,31 +186,42 @@ def main():
 
     # add the choice to also download report
     dl_or_not = 'd'
-    print("Would you like to download one of the two listed below?")
+    print("Would you like to download one of the files listed below?")
     print("1. the csv file of your transactions")
-    print("2. any other file in this directory")
+    print("2. the txt file of your transactions")
+    print("3. the pdf file of your transactions")
+    print("4. the md file of your report")
+    print("5. any other file in this directory")
 
     while dl_or_not.lower()[0] not in ['y', 'n', '1', '2']:
-      dl_or_not = input("\nEnter '1'/'2'/'y' for specific/yes and 'n' for no: ")
+      dl_or_not = input("\nEnter 'y'/'1'/'2'/'3'/'4'/'5' for yes/specific and 'n' for no: ")
 
     if dl_or_not.lower()[0] == 'y':
       num_ch = '0'
-      while num_ch.lower()[0] not in ['1', '2']:
+      while num_ch.lower()[0] not in ['1', '2', '3', '4', '5']:
         num_ch = input("\nEnter '1' for csv and '2' for other: ")
 
-      if num_ch.lower()[0] == '1':
-        print(l_and_r_line_demarcator)
-        download_file()
-      else:
-        dl_fp = input("\nEnter file path or name in this directory: ")
-        print(l_only_line_demarcator)
-        download_file(dl_fp)
-
-    elif dl_or_not.lower()[0] == '1':
+    if dl_or_not.lower()[0] == '1':
       print(l_and_r_line_demarcator)
       download_file()
 
     elif dl_or_not.lower()[0] == '2':
+      txt_file_path = find_txt_file_location()
+      print(l_only_line_demarcator)
+      download_file(txt_file_path)
+
+    elif dl_or_not.lower()[0] == '3':
+      pdf_file_path = find_pdf_file_location()
+      print(l_only_line_demarcator)
+      download_file(pdf_file_path)
+
+    elif dl_or_not.lower()[0] == '4':
+      pass
+      # emd_file_path = find_emd_file_location()
+      # print(l_only_line_demarcator)
+      # download_file(emd_file_path)
+
+    elif dl_or_not.lower()[0] == '5':
       dl_fp = input("\nEnter file path or name in this directory: ")
       print(l_only_line_demarcator)
       download_file(dl_fp)

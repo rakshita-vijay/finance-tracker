@@ -165,17 +165,17 @@ finance-tracker/
   The AI system analyzes your data through two specialized agents:
   
   **🧠 Agent 1: Transaction Data Conversion: CSV to ASCII Table**
-    - **PrettyTable Generation**: AI-powered conversion from CSV to terminal-ready ASCII tables
-    - **Two-Agent Quality Control**: Generator + Conformance checker for perfect formatting
-    - **Dynamic Width Calculation**: Auto-sizing columns based on content length
-    - **Terminal Optimization**: Clean ASCII output for command-line display
+  - **PrettyTable Generation**: AI-powered conversion from CSV to terminal-ready ASCII tables
+  - **Two-Agent Quality Control**: Generator + Conformance checker for perfect formatting
+  - **Dynamic Width Calculation**: Auto-sizing columns based on content length
+  - **Terminal Optimization**: Clean ASCII output for command-line display
   
   **📊 Agent 2: Financial Strategy Consultant** 
-    - **Executive Strategy Brief**: Summarizes the most important and actionable financial insights from the analysis.
-    - **Behavioral Segmentation Profiles**: Breaks down customer or user spending patterns into meaningful groups.
-    - **Liquidity Risk Dashboard**: Presents clear metrics and warnings about cash flow health and potential shortfalls.
-    - **Fraud Prevention Roadmap**: Outlines detected risks and practical steps to reduce fraud or suspicious activity.
-    - **Budget Recovery & Optimization**: Provides AI-generated strategies for managing overspending and improving future financial outcomes.
+  - **Executive Strategy Brief**: Summarizes the most important and actionable financial insights from the analysis.
+  - **Behavioral Segmentation Profiles**: Breaks down customer or user spending patterns into meaningful groups.
+  - **Liquidity Risk Dashboard**: Presents clear metrics and warnings about cash flow health and potential shortfalls.
+  - **Fraud Prevention Roadmap**: Outlines detected risks and practical steps to reduce fraud or suspicious activity.
+  - **Budget Recovery & Optimization**: Provides AI-generated strategies for managing overspending and improving future financial outcomes.
  
 ---
 
@@ -310,38 +310,38 @@ finance-tracker/
 
 ### (a) 🚨 Common Issues
 
-  **1. Google API Key Error**
-  ```
-  ValueError: GOOGLE_API_KEY environment variable not set
-  ```
-  **Solution**: Set your Google API key as environment variable
-  ```bash
-  export GOOGLE_API_KEY='your_api_key_here'
-  ```
+  - **Google API Key Error**
+    ```
+    ValueError: GOOGLE_API_KEY environment variable not set
+    ```
+    **Solution**: Set your Google API key as environment variable
+    ```bash
+    export GOOGLE_API_KEY='your_api_key_here'
+    ```
   
-  **2. File Not Found Error**
-  ```
-  FileNotFoundError: No such file or directory
-  ```
-  **Solution**: Ensure you're running from the project root directory and `saved_files/` exists
+  - **File Not Found Error**
+    ```
+    FileNotFoundError: No such file or directory
+    ```
+    **Solution**: Ensure you're running from the project root directory and `saved_files/` exists
   
-  **3. CrewAI JSON Parsing Error**
-  ```
-  JSON parsing error: Expecting value: line 1 column 1 (char 0)
-  ```
-  **Solution**: Check internet connection and API quota; restart application
+  - **CrewAI JSON Parsing Error**
+    ```
+    JSON parsing error: Expecting value: line 1 column 1 (char 0)
+    ```
+    **Solution**: Check internet connection and API quota; restart application
   
-  **4. Permission Denied (Downloads)**
-  ```
-  PermissionError: Access denied
-  ```
-  **Solution**: Run with appropriate file system permissions or check Downloads folder accessibility
+  - **Permission Denied (Downloads)**
+    ```
+    PermissionError: Access denied
+    ```
+    **Solution**: Run with appropriate file system permissions or check Downloads folder accessibility
   
-  **5. PrettyTable Formatting Issues**
-  ```
-  UnicodeEncodeError: 'ascii' codec can't encode
-  ```
-  **Solution**: Ensure terminal supports UTF-8 encoding or use ASCII-only characters
+  - **PrettyTable Formatting Issues**
+    ```
+    UnicodeEncodeError: 'ascii' codec can't encode
+    ```
+    **Solution**: Ensure terminal supports UTF-8 encoding or use ASCII-only characters
 
 ### (b) 📈 Performance Optimization Tips
   - Keep CSV files under 1000 transactions for optimal AI processing
@@ -403,9 +403,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ using Python, AI, and lots of coffee ☕**
-
-> *"Transforming personal finance through intelligent automation and strategic AI insights"*
+**Built with ❤️ using Python, AI, and lots of coffee ☕** 
 
 **🌟 Star this repo if it helped you manage your finances better!**  
 

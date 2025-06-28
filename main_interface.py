@@ -1,6 +1,6 @@
 import os, sys, math, re, csv, pypdf, datetime, shutil
 
-from core.budget import changeBudget, displayBudget
+from core.budget_methods import get_budgets_list, changeBudget, displayBudget
 # from types_of_methods.csv_saver import save_as_csv
 # from types_of_methods.pdf_saver import save_as_pdf
 
@@ -20,13 +20,6 @@ from crewai_toolkits_gem_2point0_flash.generate_report_from_csv import gen_repor
 l_only_line_demarcator = "\n{}".format("~" * 120)
 r_only_line_demarcator = "{}\n".format("~" * 120)
 l_and_r_line_demarcator = "\n{}\n".format("~" * 120)
-
-def get_budgets_list():
-  with open("core/default_budget.txt", 'r') as f:
-    f.seek(0)
-    fr = f.read()
-  frs = fr.split(', ')
-  return frs
 
 def choice_to_change_or_keep_current_budget():
   bud_list = get_budgets_list()

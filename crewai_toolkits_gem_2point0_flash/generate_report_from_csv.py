@@ -1,6 +1,8 @@
 import os, sys, datetime
 from crewai import Agent, Task, Crew, LLM
 
+from core.budget_methods import get_budgets_list
+
 from file_methods.csv_file_methods import extract_csv_content
 from file_methods.md_file_methods import find_md_file_location
 from file_methods.txt_file_methods import create_and_format_pretty_table
@@ -37,11 +39,12 @@ def gen_report():
 
   analyser = Agent(
     role = "Transaction Intelligence Analyst",
-    goal = '''Uncover strategic financial insights from {pretty_table} data:
+    goal = '''Uncover strategic financial insights from {pretty_table} data and {budgets}:
     1. Behavioral spending patterns and customer segmentation
     2. Cash flow health and liquidity risk
     3. Recurring expense optimization opportunities
     4. Fraud and anomaly detection with contextual analysis
+    5. Budget performance analysis (monthly/yearly spend vs allocation)
     ''',
     backstory = "Ex-McKinsey financial strategist specializing in transaction intelligence",
     verbose = True,
@@ -70,7 +73,8 @@ def gen_report():
     - Behavioral segmentation profiles
     - Liquidity risk dashboard
     - Fraud prevention roadmap
-    - Expense optimization plan""",
+    - Expense optimization plan
+    - Budget recovery strategies (make a note of {budgets})""",
     backstory = "Lead report designer for Fortune 500 financial departments",
     verbose = True,
     llm = llm
@@ -92,20 +96,19 @@ def gen_report():
   analysis = Task(
     name = "Strategic Transaction Analysis",
     agent = analyser,
-    description = """Conduct tiered analysis of {pretty_table} data:
-    Tier 1: Foundational Metrics
+    description = """Conduct analysis of {pretty_table} data:
     - Net cash position trend (daily)
     - Top 5 cash inflow/outflow events
-
-    Tier 2: Behavioral Analysis
     - Customer segmentation by spending signature (impulse vs planned)
     - Life event detection via spending habit shifts
     - Subscription/cancellation patterns
-
-    Tier 3: Strategic Insights
     - Liquidity risk scoring (days of runway)
     - Fraud network analysis (common counterparties)
     - Recurring expense optimization opportunities
+    - Calculate % of monthly/yearly budget consumed using {budgets}
+    - Identify budget overruns by category
+    - Project year-end financial position
+    - Quantify overspend impact on annual savings goals
     """,
     expected_output = "JSON with: cash_position, behavioral_segments, liquidity_risk, fraud_networks, expense_optimization"
   )
@@ -127,15 +130,25 @@ def gen_report():
   to_do_rep_generation = Task(
     name = "Strategic Financial Brief",
     agent = rep_generator,
-    description = """Create board-level report using Strategic Transaction Analysis's output:
-    - Section 0: Executive Summary (key strategic insights)
-    - Section 1: Behavioral Segmentation Profiles
-    - Section 2: Liquidity Risk Dashboard
-    - Section 3: Fraud Network Mapping
-    - Section 4: Expense Optimization Plan
-    - Appendix: Full transaction table from {pretty_table}
+    description = """Create report using Strategic Transaction Analysis's output:
+    - Executive Summary (key strategic insights)
+    - Behavioral Segmentation Profiles
+    - Liquidity Risk Dashboard
+    - Fraud Network Mapping
+    - Expense Optimization Plan
+    - Budget Recovery Roadmap: % of Monthly and Yearly budget spent and best course of action to stay within budget
+    - Appendix: Full transaction table, directly from {pretty_table}
 
-    Format: Consultancy-style Markdown with data visualizations""",
+    Format: Consultancy-style Markdown with data visualizations
+    Use {budgets} if needed
+
+    Section 5 will use {budgets}, and will have:
+    - If monthly budget exceeded:
+      a) Present Plan A: Full deduction from next month's budget
+      b) Present Plan B: Proportional reduction across remaining months
+    - Show 3-month cash flow forecast under each plan
+    - Quantify annual savings impact of each strategy
+    - Recommend optimal path based on liquidity risk profile""",
     expected_output = "Full report in Markdown format with 5 sections and appendix"
   )
 
@@ -150,10 +163,21 @@ def gen_report():
   # pretti_table = create_and_format_pretty_table()
   # pretti_table_stringed = pretti_table.get_string()
 
+  print("Starting the report generation... \n")
+
   data_lines = extract_csv_content()
   t_t_res = transformed_table(data_lines)
 
-  res = crewww.kickoff(inputs = {"pretty_table": t_t_res})
+  budgettt = get_budgets_list()
+
+  try:
+    m_bud = budgettt[0].replace("monthly = ", "").strip()
+    y_bud = budgettt[1].replace("yearly = ", "").strip()
+    bud_light = {"monthly" : float(m_bud), "yearly" : float(y_bud)}
+  except:
+    bud_light = {"monthly" : 1000.00, "yearly" : 12000.00}
+
+  res = crewww.kickoff(inputs = {"pretty_table": t_t_res, "budgets": bud_light})
 
   # find md file location and write to it
   curr_md_path = find_md_file_location()
@@ -165,7 +189,7 @@ def gen_report():
 
   with open(curr_md_path, "a") as md_f:
     md_f.write(" \n\n--- \n")
-    md_f.write(((res.raw).strip('```markdown')).strip('```'))
+    md_f.write((res.raw).strip('```'))
 
   curr_md_path = find_md_file_location()
 

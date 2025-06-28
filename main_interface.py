@@ -1,4 +1,4 @@
-import os, sys, math, re, csv, pypdf, datetime
+import os, sys, math, re, csv, pypdf, datetime, shutil
 
 from core.budget import changeBudget, displayBudget
 # from types_of_methods.csv_saver import save_as_csv
@@ -261,6 +261,11 @@ def main():
     print(l_only_line_demarcator)
     main()
   else:
+    for folders, _, files in os.walk(os.getcwd()):
+      for folder in folders:
+        if folder == "__pycache__":
+          shutil.rmtree(os.path.join(os.getcwd(), folder))
+
     print("Exiting...")
     sys.exit(1)
 

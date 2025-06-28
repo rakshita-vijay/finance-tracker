@@ -16,7 +16,7 @@ def gen_report(csv_file_loc_full_path = find_csv_file_location()):
   )
 
   analyser = Agent(
-    role = "",
+    role = '''Given the data {pretti_table_stringed}, which is the pretty table version of the csv file, analyse the contents''',
     goal = "",
     backstory = "",
     verbose = True,

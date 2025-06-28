@@ -245,6 +245,15 @@ def main():
 
   # Exit
   elif purpose_of_visit == 6:
+    for root, dirs, files in os.walk(os.getcwd()):
+      for dir_name in dirs:
+        if dir_name == "__pycache__":
+          pycache_path = os.path.join(root, dir_name)
+          try:
+            shutil.rmtree(pycache_path)
+            print(f"Deleted: {pycache_path}")
+          except Exception as e:
+            print(f"Error deleting {pycache_path}: {e}")
     print("Exiting...")
     sys.exit(1)
 
@@ -261,10 +270,14 @@ def main():
     print(l_only_line_demarcator)
     main()
   else:
-    for folders, _, files in os.walk(os.getcwd()):
-      for folder in folders:
-        if folder == "__pycache__":
-          shutil.rmtree(os.path.join(os.getcwd(), folder))
+    for root, dirs, files in os.walk(os.getcwd()):
+      for dir_name in dirs:
+        if dir_name == "__pycache__":
+          pycache_path = os.path.join(root, dir_name)
+          try:
+            shutil.rmtree(pycache_path)
+          except Exception as e:
+            print(f"Error deleting {pycache_path}: {e}")
 
     print("Exiting...")
     sys.exit(1)

@@ -4,7 +4,7 @@
 
 ---
 
-## 🎯 Project Overview
+## 1. Project Overview
 This finance tracker combines traditional transaction logging with cutting-edge AI analysis to provide strategic financial insights. The system uses a **two-agent CrewAI architecture** powered by **Gemini 2.0 Flash** to analyze spending patterns, detect anomalies, and generate actionable financial recommendations.
 
 ### 🔥 Key Highlights
@@ -16,7 +16,7 @@ This finance tracker combines traditional transaction logging with cutting-edge 
 
 ---
 
-## ✨ Features
+## 2. Features
 
 ### 📊 Core Financial Tracking
 - **7-Field Transaction Management**: `S.NO`, `DATE`, `DESCRIPTION`, `AMOUNT`, `PAYMENT METHOD`, `STATUS`, `NOTES`

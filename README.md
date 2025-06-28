@@ -229,6 +229,67 @@ finance-tracker/
 
 ---
 
+  ```mermaid
+  flowchart LR
+      A[CSV Data] --> B[Table Generator]
+      B --> C[Conformance Checker]
+      C -->|Valid ASCII Table| D[Intelligence Analyst]
+      C -->|Invalid| B
+      D --> E[Strategy Consultant]
+      E --> F[Final Report]
+  
+      subgraph CSV_to_ASCII["Stage 1: CSV to ASCII"]
+          B["Agent: Table Generator
+          - PrettyTable Generation
+          - Dynamic Width Calculation
+          - Terminal Optimization"]
+          C["Agent: Conformance Checker
+          - Validate Pipe/Dash Usage
+          - Check Column Alignment
+          - Verify Width Compliance"]
+      end
+  
+      subgraph Analysis_Report["Stage 2: Financial Analysis"]
+          D["Agent: Intelligence Analyst
+          - Cash Flow Trends
+          - Behavioral Segmentation
+          - Fraud Detection
+          - Budget Analysis"]
+          E["Agent: Strategy Consultant
+          - Executive Summary
+          - Risk Dashboard
+          - Recovery Roadmap
+          - Optimization Plans"]
+      end
+  ```
+  
+---
+  
+  ```mermaid
+  flowchart TD
+      A[CSV Data] --> B[transform_csv_to_md_table.py]
+      B --> C[ASCII Table Output]
+      C --> D[generate_report_from_csv.py]
+      D --> E[Final Markdown Report]
+  
+      subgraph Stage1 ["Stage 1: CSV to ASCII"]
+          B1[Table Generator Agent]
+          B2[Conformer Agent]
+          B1 --> B2
+      end
+  
+      subgraph Stage2 ["Stage 2: Analysis&Reporting"]
+          D1[Intelligence Analyst Agent]
+          D2[Strategy Consultant Agent]
+          D1 --> D2
+      end
+  
+      B -.-> Stage1
+      D -.-> Stage2
+  ```
+
+---
+
 ## 8. File Format Details
 
 ### (a) CSV Structure

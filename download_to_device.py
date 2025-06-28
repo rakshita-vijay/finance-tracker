@@ -146,7 +146,7 @@ def download_file(file_to_download = None):
 
 if __name__ == "__main__":
   if len(sys.argv) > 1:
-    if sys.argv[1] == "all":
+    if sys.argv[1].lower() == "all":
       download_all_files_flat_to_downloads()
     else:
       download_file(sys.argv[1])

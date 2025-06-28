@@ -2,6 +2,8 @@
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) tracker with AI-powered analysis and multi-format report generation. Built with Python, CrewAI, and Google's Gemini 2.0 Flash for intelligent financial insights.
 
+---
+
 ## 🎯 Project Overview
 
 This finance tracker combines traditional transaction logging with cutting-edge AI analysis to provide strategic financial insights. The system uses a **two-agent CrewAI architecture** powered by **Gemini 2.0 Flash** to analyze spending patterns, detect anomalies, and generate actionable financial recommendations.
@@ -13,6 +15,8 @@ This finance tracker combines traditional transaction logging with cutting-edge 
 - **Budget Management**: Monthly/yearly budget tracking with AI-generated recovery strategies
 - **Automated File Management**: Smart Downloads folder detection and cleanup operations
 - **Clean Architecture**: Modular design with separation of concerns
+
+---
 
 ## ✨ Features
 
@@ -47,6 +51,8 @@ This finance tracker combines traditional transaction logging with cutting-edge 
 - **Error Handling**: Comprehensive input validation and exception management
 - **Session Management**: Graceful exit with cleanup operations
 
+---
+
 ## 🏗️ Project Structure
 
 ```
@@ -73,6 +79,8 @@ finance-tracker/
 ├── 📋 requirements.txt                       # Python dependencies
 └── 📖 README.md                             # Project documentation
 ```
+
+---
 
 ## 🚀 Installation & Setup
 
@@ -126,6 +134,8 @@ S.NO,DATE,DESCRIPTION,AMOUNT,PAYMENT METHOD,STATUS,NOTES
 python main_interface.py
 ```
 
+---
+
 ## 📖 Usage Guide
 
 ### Main Menu Options
@@ -176,6 +186,8 @@ llm = LLM(
 )
 ```
 
+---
+
 ## 📁 File Format Details
 
 ### CSV Structure
@@ -220,6 +232,8 @@ Overspend management with Plan A/B scenarios...
 ## Appendix
 Full transaction table and supporting data...
 ```
+
+---
 
 ## 🔧 Advanced Features
 
@@ -267,6 +281,8 @@ python download_to_device.py all
 - **Status Validation**: Enum-based validation for transaction status
 - **File Integrity**: `flush()` and `fsync()` operations for data safety
 - **Retry Mechanisms**: Automatic retry for file operations
+
+---
 
 ## 🐛 Troubleshooting
 
@@ -317,6 +333,8 @@ Enable verbose logging by modifying agent settings:
 verbose = True  # In generate_report_from_csv.py
 ```
 
+---
+
 ## 🤝 Contributing
 
 ### Development Setup
@@ -343,6 +361,8 @@ cp saved_files/trial_csv_data saved_files/test_transactions.csv
 python main_interface.py
 ```
 
+---
+
 ## 📚 Technical Resources
 
 ### Documentation Links
@@ -359,13 +379,13 @@ python main_interface.py
 - [Personal Finance Tracker Examples](https://github.com/Firdous2307/personal-finance-tracker)
 - [CrewAI Multi-Agent Examples](https://github.com/DAEM007/finance-tracker-project)
 
-## 🏷️ Technical Tags
-
-`Multi-Agent AI` `Financial Analysis` `Python` `CrewAI` `Gemini 2.0 Flash` `Budget Management` `Report Generation` `Terminal Application` `CSV Processing` `PDF Generation` `Markdown Reports` `ASCII Tables` `File Management` `Auto-Synchronization` `Downloads Management` `Format Conversion` `Cleanup Automation` `Strategic Analytics` `Behavioral Analysis` `Fraud Detection` `Liquidity Analysis` `PrettyTable` `FPDF` `Zipfile Operations` `Prompt Engineering` `AI Agents` `LLM Integration`
+--- 
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
 
 ## 🔗 Quick Links
 
@@ -373,6 +393,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **CrewAI Framework**: [crewai.com](https://crewai.com)
 - **Gemini 2.0 Flash**: [Google Blog](https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/)
 - **Project Issues**: [GitHub Issues](https://github.com/your-username/finance-tracker/issues)
+
+---
 
 ## 🎯 Quick Start Commands
 
@@ -396,28 +418,4 @@ python download_to_device.py all
 
 > *"Transforming personal finance through intelligent automation and strategic AI insights"*
 
-**🌟 Star this repo if it helped you manage your finances better!**
-
-[1] https://pplx-res.cloudinary.com/image/private/user_uploads/53367127/d132da1a-a1bd-4f9f-9542-61562ddd9a67/Screenshot-2025-06-28-at-11.36.52-PM.jpg
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/aaaea074-acb9-439a-8230-4ea819d6baa9/budget_methods.py
-[3] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/92aca27f-865f-4d1b-af7c-a6e6bf5730ed/csv_file_methods.py
-[4] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/41942093-88f0-4f86-9856-e5f9ec410df0/default_budget.txt
-[5] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/42b46bbf-512a-4a38-8a73-079c9e83bddf/download_to_device.py
-[6] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/2e3730b5-a6ef-4984-a6e5-6193aa9f9305/generate_report_from_csv.py
-[7] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/194e9ebb-8de8-4c3a-b2f6-f48d32fbf168/main_interface.py
-[8] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/bd3e0db3-9ee3-4517-b63c-a98e1cd617e0/md_file_methods.py
-[9] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/2b8232d2-d285-447a-a406-8c3fc73cb56e/pdf_file_methods.py
-[10] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/feb6ce05-5968-43ad-ac9a-1eff3fa07c30/requirements.txt
-[11] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/5049ffdb-971b-4b81-94fd-16e62ba54f62/transform_csv_to_md_table.py
-[12] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/94addd9f-26b9-4b14-8542-67ca5d3545e2/trial_csv_data
-[13] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/53367127/19efd7de-ff32-4a97-91b3-467684b80110/txt_file_methods.py
-[14] https://github.com/Firdous2307/personal-finance-tracker
-[15] https://github.com/DAEM007/finance-tracker-project
-[16] https://community.crewai.com/t/automated-project-notebook-gemini/2441
-[17] https://github.com/Keonleebv/FinanceTracker
-[18] https://github.com/lucaspoli/sonda-ai
-[19] https://www.thebricks.com/resources/how-to-build-a-personal-finance-tracker-in-spreadsheets-using-ai
-[20] https://www.ijsrtjournal.com/article/AI-Powered-Expense--Budget-Tracker-A-Web-Based-Financial-Planning-System
-[21] https://www.youtube.com/watch?v=gvUsUpDlav4
-[22] https://expenseai.app
-[23] https://ijarcce.com/wp-content/uploads/2025/03/IJARCCE.2025.14364.pdf
+**🌟 Star this repo if it helped you manage your finances better!** 

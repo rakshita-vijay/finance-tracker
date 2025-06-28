@@ -11,19 +11,18 @@ This finance tracker combines traditional transaction logging with cutting-edge 
 ### 🔥 Key Highlights
 - **AI-Powered Analysis**: Strategic transaction intelligence using Gemini 2.0 Flash
 - **Multi-Agent System**: Transaction Intelligence Analyst + Financial Strategy Consultant
-- **Multi-Format Support**: CSV, TXT, PDF, and Markdown outputs with auto-synchronization
+- **Multi-Format Support**: `CSV`, `TXT`, `PDF`, and `MD` outputs with auto-synchronization
 - **Budget Management**: Monthly/yearly budget tracking with AI-generated recovery strategies
-- **Automated File Management**: Smart Downloads folder detection and cleanup operations
-- **Clean Architecture**: Modular design with separation of concerns
+- **Automated File Management**: Smart Downloads folder detection and cleanup operations 
 
 ---
 
 ## ✨ Features
 
 ### 📊 Core Financial Tracking
-- **7-Field Transaction Management**: S.NO, DATE, DESCRIPTION, AMOUNT, PAYMENT METHOD, STATUS, NOTES
+- **7-Field Transaction Management**: `S.NO`, `DATE`, `DESCRIPTION`, `AMOUNT`, `PAYMENT METHOD`, `STATUS`, `NOTES`
 - **Budget Analysis**: Compare spending against monthly/yearly budgets with overspend alerts
-- **Multi-Format Exports**: Automatic CSV, TXT, PDF, and MD file generation
+- **Multi-Format Exports**: Automatic `CSV`, `TXT`, `PDF`, and `MD` file generation
 - **Real-Time Synchronization**: Auto-update all formats when transactions change
 - **Data Validation**: Robust input validation with error handling
 
@@ -32,15 +31,14 @@ This finance tracker combines traditional transaction logging with cutting-edge 
 - **Liquidity Risk Analysis**: Calculate days of financial runway
 - **Fraud Detection**: Network analysis for anomaly detection
 - **Budget Recovery Plans**: AI-generated strategies for overspend scenarios
-- **Trend Forecasting**: Year-end financial position projections
-- **Payment Method Analysis**: Distribution and effectiveness insights
+- **Trend Forecasting**: Year-end financial position projections 
 - **Transaction Status Tracking**: Completion, pending, and failure analysis
 
 ### 🛠️ Advanced File Operations
 - **Smart Downloads**: Cross-platform Downloads folder detection/creation
-- **Bulk Repository Download**: Zip entire repo (excluding __pycache__, README)
-- **Format Conversion Pipeline**: Seamless CSV ↔ TXT ↔ PDF ↔ MD conversion
-- **Automatic Cleanup**: __pycache__ and temporary zip file deletion
+- **Bulk Repository Download**: Zip entire repo (excluding `__pycache__` and `README`)
+- **Format Conversion Pipeline**: Seamless `CSV` ↔ `TXT` ↔ `PDF` ↔ `MD` conversion
+- **Automatic Cleanup**: `__pycache__` and temporary zip file deletion
 - **Timestamp Management**: Automatic file renaming with precise timestamps
 - **File Integrity**: Flush and fsync operations for data safety
 
@@ -57,27 +55,27 @@ This finance tracker combines traditional transaction logging with cutting-edge 
 
 ```
 finance-tracker/
-├── 📁 core/                                   # Core application logic
-│   ├── 🐍 budget_methods.py                  # Budget management & comparison
-│   └── 📄 default_budget.txt                 # Default budget configuration
-├── 📁 crewai_toolkits_gem_2point0_flash/     # AI toolkit modules
-│   ├── 🐍 generate_report_from_csv.py        # Main AI report generator
-│   └── 🐍 transform_csv_to_md_table.py       # CSV to ASCII table converter
-├── 📁 file_methods/                          # File processing modules
-│   ├── 🐍 csv_file_methods.py               # CSV operations & validation
-│   ├── 🐍 md_file_methods.py                # Markdown file handling
-│   ├── 🐍 pdf_file_methods.py               # PDF generation (FPDF)
-│   └── 🐍 txt_file_methods.py               # Text file & PrettyTable ops
-├── 📁 saved_files/                           # Generated files storage
-│   ├── 📊 csv_*.csv                         # Transaction data files
-│   ├── 📝 txt_version_of_csv_*.txt          # ASCII table versions
-│   ├── 📄 pdf_*.pdf                         # PDF reports
-│   ├── 📋 md_report_*.md                    # AI analysis reports
-│   └── 📋 trial_csv_data                    # Test data template
-├── 🎯 main_interface.py                      # 🎯 MAIN ENTRY POINT
-├── 📥 download_to_device.py                  # File download utilities
-├── 📋 requirements.txt                       # Python dependencies
-└── 📖 README.md                             # Project documentation
+├── 📁 core/                                # Core application logic
+│   ├── 🐍 budget_methods.py                # Budget management & comparison
+│   └── 📄 default_budget.txt               # Default budget configuration
+├── 📁 crewai_toolkits_gem_2point0_flash/      # AI toolkit modules
+│   ├── 🐍 generate_report_from_csv.py         # Main AI report generator
+│   └── 🐍 transform_csv_to_md_table.py        # CSV to ASCII table converter
+├── 📁 file_methods/                        # File processing modules
+│   ├── 🐍 csv_file_methods.py              # CSV operations & validation
+│   ├── 🐍 md_file_methods.py               # Markdown file handling
+│   ├── 🐍 pdf_file_methods.py              # PDF generation (FPDF)
+│   └── 🐍 txt_file_methods.py              # Text file & PrettyTable ops
+├── 📁 saved_files/                            # Generated files storage
+│   ├── 📊 csv_*.csv                           # Transaction data files
+│   ├── 📝 txt_version_of_csv_*.txt            # ASCII table versions
+│   ├── 📄 pdf_*.pdf                           # PDF reports
+│   ├── 📋 md_report_*.md                      # AI analysis reports
+│   └── 📋 trial_csv_data                      # Test data template
+├── 🎯 main_interface.py                    # 🎯 MAIN ENTRY POINT
+├── 📥 download_to_device.py                # File download utilities
+├── 📋 requirements.txt                     # Python dependencies
+└── 📖 README.md                            # Project documentation
 ```
 
 ---
@@ -111,7 +109,6 @@ set GOOGLE_API_KEY=your_api_key_here
 # On PowerShell:
 $env:GOOGLE_API_KEY="your_api_key_here"
 ```
-
 **Get your API key**: [Google AI Studio](https://ai.google.dev)
 
 ### 4. Initialize Default Budget
@@ -121,7 +118,7 @@ monthly = 6000, yearly = 72000
 ```
 
 ### 5. Set Up Test Data (Optional)
-Copy the contents from `saved_files/trial_csv_data` into a new CSV file for testing:
+Copy the contents from `saved_files/trial_csv_data` into `saved_files/csv_*.csv` for testing:
 ```csv
 S.NO,DATE,DESCRIPTION,AMOUNT,PAYMENT METHOD,STATUS,NOTES
 01,28/06/2025,Groceries at SuperMart,45.75,Debit Card,Completed,Weekly shopping
@@ -140,31 +137,89 @@ python main_interface.py
 
 ### Main Menu Options
 ```
-1. Add Transaction(s)     - Input new financial transactions
+1. Add Transaction(s)    - Input new financial transactions
 2. View Spending         - Display transactions and budget status
 3. Generate Report       - Create AI-powered financial analysis
 4. Change Budget         - Modify monthly/yearly allocations
 5. Download Files        - Export files to Downloads folder
 6. Wipe Transactions     - Clear all transaction history
 7. Exit                  - Clean up and terminate
-```
-
-### Adding Transactions
-```
-Enter the date in MM/DD/YYYY format: 06/28/2025
-Enter the description: Coffee at Starbucks
-Enter the amount: 5.25
-Enter payment method: Credit Card
-Enter status: Completed
-Enter notes: Morning coffee
-```
+``` 
 
 ### Transaction Fields
+
 | Field | Description | Validation |
-|-------|-------------|------------|
+| :-- | :-- | :-- |
 | **S.NO** | Sequential number (auto-generated) | Auto-increment |
 | **DATE** | Transaction date | MM/DD/YYYY format |
-| **DESCRIPTION** | Transaction description |  B[Intelligence Analyst]
+| **DESCRIPTION** | Transaction description | <60 characters |
+| **AMOUNT** | Transaction amount | Float (positive/negative) |
+| **PAYMENT METHOD** | Payment type | Free text <20 chars |
+| **STATUS** | Transaction status | Completed/Pending/Failed/Cancelled |
+| **NOTES** | Additional notes | <60 characters |
+
+### Report Generation
+
+The AI system analyzes your data through two specialized agents:
+
+**🧠 Agent 1: Transaction Data Conversion: CSV to ASCII Table**
+- **PrettyTable Generation**: AI-powered conversion from CSV to terminal-ready ASCII tables
+- **Two-Agent Quality Control**: Generator + Conformance checker for perfect formatting
+- **Dynamic Width Calculation**: Auto-sizing columns based on content length
+- **Terminal Optimization**: Clean ASCII output for command-line display
+
+**📊 Agent 2: Financial Strategy Consultant** 
+- **Executive Strategy Brief**: Summarizes the most important and actionable financial insights from the analysis.
+- **Behavioral Segmentation Profiles**: Breaks down customer or user spending patterns into meaningful groups.
+- **Liquidity Risk Dashboard**: Presents clear metrics and warnings about cash flow health and potential shortfalls.
+- **Fraud Prevention Roadmap**: Outlines detected risks and practical steps to reduce fraud or suspicious activity.
+- **Budget Recovery & Optimization**: Provides AI-generated strategies for managing overspending and improving future financial outcomes.
+ 
+---
+
+## 🔧 Dependencies & Technologies
+
+### Core Dependencies
+
+```txt
+crewai          # Multi-agent AI framework
+prettytable     # ASCII table formatting
+fpdf            # PDF generation
+pypdf           # PDF processing utilities
+```
+
+### Built-in Libraries Used
+
+- `os`, `sys`, `csv` - File system operations
+- `datetime`, `time` - Timestamp management
+- `zipfile`, `shutil` - Archive and file operations
+- `re`, `math` - Pattern matching and calculations
+
+### AI \& Machine Learning
+
+- **Google Gemini 2.0 Flash** - Advanced language model
+- **CrewAI Framework** - Multi-agent orchestration
+- **LiteLLM Integration** - Model provider abstraction
+
+---
+
+## 🤖 AI Architecture
+
+### Gemini 2.0 Flash Integration
+
+This project leverages Google's latest **Gemini 2.0 Flash** model for:
+
+- **Enhanced Performance**: 2x faster than Gemini 1.5 Pro
+- **Multimodal Capabilities**: Text, image, and audio processing
+- **Native Tool Calling**: Direct integration with Python functions
+- **Advanced Reasoning**: Complex financial pattern analysis
+- **Cost Efficiency**: Optimized for high-volume operations
+
+### CrewAI Multi-Agent System
+
+```mermaid
+graph LR
+    A[Transaction Data] --> B[Intelligence Analyst]
     B --> C[Strategy Consultant]
     C --> D[Final Report]
     
@@ -177,7 +232,7 @@ Enter notes: Morning coffee
     C --> C3[Risk Assessment]
 ```
 
-**Agent Configuration:**
+**Agent Configuration:**  
 ```python
 llm = LLM(
     model="gemini/gemini-2.0-flash",
@@ -418,4 +473,4 @@ python download_to_device.py all
 
 > *"Transforming personal finance through intelligent automation and strategic AI insights"*
 
-**🌟 Star this repo if it helped you manage your finances better!** 
+**🌟 Star this repo if it helped you manage your finances better!**  

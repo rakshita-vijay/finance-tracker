@@ -213,23 +213,6 @@ finance-tracker/
 
 ### (ii) CrewAI Multi-Agent System 
   ```mermaid
-  graph LR
-      A[Transaction Data] --> B[Intelligence Analyst]
-      B --> C[Strategy Consultant]
-      C --> D[Final Report]
-      
-      B1[Pattern Detection] --> B
-      B2[Anomaly Analysis] --> B
-      B3[Budget Analysis] --> B
-      
-      C --> C1[Recovery Plans]
-      C --> C2[Recommendations]
-      C --> C3[Risk Assessment]
-  ```
-
----
-
-  ```mermaid
   flowchart LR
       A[CSV Data] --> B[Table Generator]
       B --> C[Conformance Checker]
@@ -289,6 +272,23 @@ finance-tracker/
   ```
 
 ---
+  Second Agent's Workflow:
+  ```mermaid
+  graph LR
+      A[Transaction Data] --> B[Intelligence Analyst]
+      B --> C[Strategy Consultant]
+      C --> D[Final Report]
+      
+      B1[Pattern Detection] --> B
+      B2[Anomaly Analysis] --> B
+      B3[Budget Analysis] --> B
+      
+      C --> C1[Recovery Plans]
+      C --> C2[Recommendations]
+      C --> C3[Risk Assessment]
+  ```
+
+---
 
 ## 8. File Format Details
 
@@ -319,7 +319,46 @@ finance-tracker/
 
 ---
 
-## 9. Advanced Features
+## 9. Workflow
+```mermaid
+flowchart TD
+    A[CSV Transaction Data] --> B[transform_csv_to_md_table.py]
+    B --> C[Table Generator Agent]
+    C --> D[Conformer Agent]
+    D -->| Valid? | E{Validation}
+    E -->| No | C
+    E -->| Yes | F[ASCII Table Output]
+    F --> G[generate_report_from_csv.py]
+    G --> H[Intelligence Analyst Agent]
+    H --> I[Strategy Consultant Agent]
+    I --> J[Final Markdown Report]
+    K[Budget Data] --> G
+
+    subgraph Stage1["Stage 1: CSV to ASCII Conversion"]
+        B --> C
+        C --> D
+        D --> E
+    end
+
+    subgraph Stage2["Stage 2: Financial Analysis & Reporting"]
+        G --> H
+        H --> I
+        I --> J
+    end
+
+    subgraph FileOperations["File Operations"]
+        J --> M[Save to saved_files/]
+        M --> N[Auto-update PDF/TXT]
+    end
+
+    style Stage1 fill:#e6f7ff,stroke:#333
+    style Stage2 fill:#ffe6e6,stroke:#333
+    style FileOperations fill:#f0f9eb,stroke:#333
+```
+
+---
+
+## 10. Advanced Features
 
 ### (a) Automatic File Management
   - **Cross-Platform Downloads Detection**: Windows, macOS, Linux support
@@ -367,7 +406,7 @@ finance-tracker/
 
 ---
 
-## 10. Troubleshooting
+## 11. Troubleshooting
 
 ### (a) 🚨 Common Issues
 
@@ -418,7 +457,7 @@ finance-tracker/
 
 ---
 
-## 11. Contributing
+## 12. Contributing
 
 ### (a) Development Setup
   1. Fork the repository
@@ -441,7 +480,7 @@ finance-tracker/
 
 ---
 
-## 12. Technical Resources
+## 13. Technical Resources
 
 ### Documentation Links
 - [CrewAI Documentation](https://docs.crewai.com/)
@@ -459,7 +498,7 @@ finance-tracker/
 
 --- 
 
-## 13. License
+## 14. License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---

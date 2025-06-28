@@ -57,6 +57,3 @@ def update_txt_file(table = create_and_format_pretty_table()):
   new_pdf_fp = os.path.join(dir_path, new_pdf_name)
 
   txt_to_pdf(new_fp, new_pdf_fp)
-
-# add functionality: if txt file is updated, pdf file is automatically updated
-# link another func here

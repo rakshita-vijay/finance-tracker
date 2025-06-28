@@ -57,9 +57,6 @@ def download_all_files_flat_to_downloads():
   delete_zip_files()
 
 def download_file(file_to_download = None):
-  if sys.argv[1] == "all":
-    download_all_files_flat_to_downloads()
-    return
   # print("file_to_download: ", file_to_download)
 
   if file_to_download == None:
@@ -149,7 +146,10 @@ def download_file(file_to_download = None):
 
 if __name__ == "__main__":
   if len(sys.argv) > 1:
-    download_file(sys.argv[1])
+    if sys.argv[1] == "all":
+      download_all_files_flat_to_downloads()
+    else:
+      download_file(sys.argv[1])
   else:
     download_file()
   delete_pychache()

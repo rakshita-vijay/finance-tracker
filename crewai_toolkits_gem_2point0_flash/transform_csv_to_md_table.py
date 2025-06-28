@@ -103,7 +103,7 @@ def transformed_table(data_lines):
 
   resp = crewww.kickoff(inputs={"csv_data": data_lines, "maximum_width_of_each_column": max_width_of_each_column})
 
-  return resp.raw.strip('```')
+  return (resp.raw.strip('```')).strip('markdown')
 
 if __name__ == "__main__":
   curr_csv = ""

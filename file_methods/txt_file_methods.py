@@ -26,7 +26,15 @@ def create_and_format_pretty_table():
     for row in reader:
       table.add_row(row)
 
-  alignments = {"S.NO": "c", "DATE": "c", "DESCRIPTION": "l", "AMOUNT": "r", "NOTES": "l"}
+  alignments = {
+    "S.NO": "c",
+    "DATE": "c",
+    "DESCRIPTION": "l",
+    "AMOUNT": "r",
+    "PAYMENT METHOD": "c",
+    "STATUS": "c",
+    "NOTES": "l"
+  }
 
   # Set custom alignment per column
   for fn in table.field_names:

@@ -1,4 +1,4 @@
-import os, csv, sys, datetime
+import os, csv, sys, datetime, time
 from crewai_toolkits_gem_2point0_flash.transform_csv_to_md_table import transformed_table, get_max_width_of_each_column
 
 def find_csv_file_location():
@@ -32,7 +32,7 @@ def get_trans_line_details():
   tran_done = len(csv_file_lines) - 1 # because heading also exists
   curr_tran = tran_done + 1 # current transaction
 
-  fields = ['S.NO', 'DATE', 'DESCRIPTION', 'AMOUNT', 'NOTES']
+  fields = ['S.NO', 'DATE', 'DESCRIPTION', 'AMOUNT', 'PAYMENT METHOD', 'STATUS', 'NOTES']
   responses = []
   responses.append(curr_tran)
 
@@ -117,6 +117,45 @@ def get_trans_line_details():
   responses.append(resp)
   print()
 
+  # PAYMENT METHOD
+  thro_err = True
+  while thro_err:
+    try:
+      resp = input("Enter payment method (Cash/Credit/Debit/UPI/etc): ")
+      stripped_resp = resp.strip()
+
+      if len(stripped_resp) > 20:
+        raise Exception
+      else:
+        thro_err = False
+
+    except Exception as ex:
+      # thro_err = True
+      print("\nMessage is too long. Retry.")
+
+  responses.append(stripped_resp)
+  print()
+
+  # STATUS
+  thro_err = True
+  while thro_err:
+    try:
+      resp = input("Enter status (Completed/Pending/Failed/Cancelled): ")
+      stripped_resp = resp.strip()
+
+      valid_statuses = ["Completed", "Pending", "Failed", "Cancelled"]
+
+      if stripped_resp.title() not in valid_statuses:
+        raise Exception
+      else:
+        thro_err = False
+
+    except Exception as ex:
+      print("\nInvalid status. Retry.")
+
+  responses.append(stripped_resp.title())
+  print()
+
   # NOTES
   thro_err = True
   while thro_err == True:
@@ -153,6 +192,8 @@ def add_to_csv(list_of_lists):
 
     num_of_next_data_line += 1
 
+  csv_file.flush()
+  os.fsync(csv_file.fileno())
   csv_file.close()
 
 def get_max_width_of_each_column_in_csv(csv_dayta = extract_csv_content()):

@@ -1,4 +1,4 @@
-import os, sys, datetime
+import os, sys, datetime, time
 from crewai import Agent, Task, Crew, LLM
 
 from core.budget_methods import get_budgets_list
@@ -105,6 +105,8 @@ def gen_report():
     - Liquidity risk scoring (days of runway)
     - Fraud network analysis (common counterparties)
     - Recurring expense optimization opportunities
+    - Payment method distribution
+    - Transaction status analysis
     - Calculate % of monthly/yearly budget consumed using {budgets}
     - Identify budget overruns by category
     - Project year-end financial position
@@ -165,7 +167,18 @@ def gen_report():
 
   print("Starting the report generation... \n")
 
-  data_lines = extract_csv_content()
+  for attempt in range(5):
+    n = str(attempt+1).zfill(2)
+    try:
+      data_lines = extract_csv_content()
+      break
+    except Exception:
+      # print(f"Attempt #{n} at getting csv file location: failed :(")
+      if attempt == 4:
+        print("Retry :(")
+        sys.exit(1)
+      time.sleep(3)
+
   t_t_res = transformed_table(data_lines)
 
   budgettt = get_budgets_list()
@@ -175,7 +188,7 @@ def gen_report():
     y_bud = budgettt[1].replace("yearly = ", "").strip()
     bud_light = {"monthly" : float(m_bud), "yearly" : float(y_bud)}
   except:
-    bud_light = {"monthly" : 1000.00, "yearly" : 12000.00}
+    bud_light = {"monthly" : 1000, "yearly" : 12000}
 
   res = crewww.kickoff(inputs = {"pretty_table": t_t_res, "budgets": bud_light})
 
@@ -189,7 +202,7 @@ def gen_report():
 
   with open(curr_md_path, "a") as md_f:
     md_f.write(" \n\n--- \n")
-    md_f.write((res.raw).strip('```'))
+    md_f.write((res.raw.strip('```')).strip('markdown'))
 
   curr_md_path = find_md_file_location()
 

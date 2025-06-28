@@ -7,7 +7,7 @@
 ## 1. Project Overview
 This finance tracker combines traditional transaction logging with cutting-edge AI analysis to provide strategic financial insights. The system uses a **two-agent CrewAI architecture** powered by **Gemini 2.0 Flash** to analyze spending patterns, detect anomalies, and generate actionable financial recommendations.
 
-### 🔥 Key Highlights
+### Key Highlights
 - **AI-Powered Analysis**: Strategic transaction intelligence using Gemini 2.0 Flash
 - **Multi-Agent System**: Transaction Intelligence Analyst + Financial Strategy Consultant
 - **Multi-Format Support**: `CSV`, `TXT`, `PDF`, and `MD` outputs with auto-synchronization
@@ -129,6 +129,11 @@ S.NO,DATE,DESCRIPTION,AMOUNT,PAYMENT METHOD,STATUS,NOTES
 python main_interface.py
 ```
 
+### 7. Download All Files
+```bash
+python download_to_device.py all
+``` 
+
 ---
 
 ## 5. Usage Guide
@@ -145,7 +150,6 @@ python main_interface.py
 ``` 
 
 ### Transaction Fields
-
 | Field | Description | Validation |
 | :-- | :-- | :-- |
 | **S.NO** | Sequential number (auto-generated) | Auto-increment |
@@ -157,7 +161,6 @@ python main_interface.py
 | **NOTES** | Additional notes | <60 characters |
 
 ### Report Generation
-
 The AI system analyzes your data through two specialized agents:
 
 **🧠 Agent 1: Transaction Data Conversion: CSV to ASCII Table**
@@ -177,8 +180,7 @@ The AI system analyzes your data through two specialized agents:
 
 ## 6. Dependencies & Technologies
 
-### Core Dependencies
-
+### Core Dependencies 
 ```txt
 crewai          # Multi-agent AI framework
 prettytable     # ASCII table formatting
@@ -186,15 +188,13 @@ fpdf            # PDF generation
 pypdf           # PDF processing utilities
 ```
 
-### Built-in Libraries Used
-
+### Built-in Libraries Used 
 - `os`, `sys`, `csv` - File system operations
 - `datetime`, `time` - Timestamp management
 - `zipfile`, `shutil` - Archive and file operations
 - `re`, `math` - Pattern matching and calculations
 
-### AI & Machine Learning
-
+### AI & Machine Learning 
 - **Google Gemini 2.0 Flash** - Advanced language model
 - **CrewAI Framework** - Multi-agent orchestration
 - **LiteLLM Integration** - Model provider abstraction
@@ -203,18 +203,14 @@ pypdf           # PDF processing utilities
 
 ## 7. AI Architecture
 
-### Gemini 2.0 Flash Integration
-
-This project leverages Google's latest **Gemini 2.0 Flash** model for:
-
-- **Enhanced Performance**: 2x faster than Gemini 1.5 Pro
-- **Multimodal Capabilities**: Text, image, and audio processing
+### Gemini 2.0 Flash Integration 
+This project leverages Google's latest **Gemini 2.0 Flash** model for: 
+- **Enhanced Performance**: 2x faster than Gemini 1.5 Pro 
 - **Native Tool Calling**: Direct integration with Python functions
 - **Advanced Reasoning**: Complex financial pattern analysis
 - **Cost Efficiency**: Optimized for high-volume operations
 
-### CrewAI Multi-Agent System
-
+### CrewAI Multi-Agent System 
 ```mermaid
 graph LR
     A[Transaction Data] --> B[Intelligence Analyst]
@@ -228,15 +224,6 @@ graph LR
     C --> C1[Recovery Plans]
     C --> C2[Recommendations]
     C --> C3[Risk Assessment]
-```
-
-**Agent Configuration:**  
-```python
-llm = LLM(
-    model="gemini/gemini-2.0-flash",
-    temperature=0.5,
-    api_key=GOOGLE_API_KEY
-)
 ```
 
 ---
@@ -292,7 +279,7 @@ Full transaction table and supporting data...
 
 ### Automatic File Management
 - **Cross-Platform Downloads Detection**: Windows, macOS, Linux support
-- **Timestamp Synchronization**: All files maintain consistent naming `format_DD_MM_YYYY_HH_MM_SS`
+- **Timestamp Synchronization**: All files maintain consistent naming `format_DD_MM_YYYY_HH_MM_SS.format`
 - **Format Conversion Pipeline**: 
   ```
   CSV → PrettyTable → TXT → PDF
@@ -323,9 +310,8 @@ python download_to_device.py all
 ```
 
 **Features:**
-- Automatic zip compression for non-CSV files
-- Flat directory structure in Downloads folder
-- Exclusion of system files (.git, __pycache__, README)
+- Automatic zip compression for non-CSV files 
+- Exclusion of system files (`.git`, `__pycache__`, `README`)
 - Progress feedback and error handling
 
 ### Data Validation & Error Handling
@@ -378,7 +364,7 @@ UnicodeEncodeError: 'ascii' codec can't encode
 - Keep CSV files under 1000 transactions for optimal AI processing
 - Use SSD storage for faster file operations
 - Close other applications during report generation
-- Set terminal encoding to UTF-8 for proper table display
+- Set terminal encoding to utf-8 for proper table display
 
 ### Debug Mode
 Enable verbose logging by modifying agent settings:
@@ -407,12 +393,7 @@ verbose = True  # In generate_report_from_csv.py
 - Test with provided `trial_csv_data` before submitting
 
 ### Testing
-Use the provided test data:
-```bash
-# Copy trial_csv_data contents to a new CSV file
-cp saved_files/trial_csv_data saved_files/test_transactions.csv
-python main_interface.py
-```
+Copy the contents from `saved_files/trial_csv_data` into `saved_files/csv_*.csv` 
 
 ---
 
@@ -439,35 +420,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 14. Quick Links
-- **Google AI Studio**: [ai.google.dev](https://ai.google.dev)
-- **CrewAI Framework**: [crewai.com](https://crewai.com)
-- **Gemini 2.0 Flash**: [Google Blog](https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/)
-- **Project Issues**: [GitHub Issues](https://github.com/your-username/finance-tracker/issues)
-
----
-
-## 15. Quick Start Commands
-```bash
-# Clone and setup
-git clone https://github.com/your-username/finance-tracker.git
-cd finance-tracker
-pip install -r requirements.txt
-
-# Set API key
-export GOOGLE_API_KEY='your_api_key_here'
-
-# Run application
-python main_interface.py
-
-# Download all files
-python download_to_device.py all
-```
-
----
-
 **Built with ❤️ using Python, AI, and lots of coffee ☕**
 
 > *"Transforming personal finance through intelligent automation and strategic AI insights"*
 
 **🌟 Star this repo if it helped you manage your finances better!**  
+
+---

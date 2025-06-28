@@ -50,8 +50,7 @@ This finance tracker combines traditional transaction logging with cutting-edge 
 
 ---
 
-## 🏗️ Project Structure
-
+## 3. Project Structure
 ```
 finance-tracker/
 ├── 📁 core/                                # Core application logic
@@ -79,7 +78,7 @@ finance-tracker/
 
 ---
 
-## 🚀 Installation & Setup
+## 4. Installation & Setup
 
 ### Prerequisites
 - **Python 3.8+** (Required for CrewAI and modern features)
@@ -132,7 +131,7 @@ python main_interface.py
 
 ---
 
-## 📖 Usage Guide
+## 5. Usage Guide
 
 ### Main Menu Options
 ```
@@ -176,7 +175,7 @@ The AI system analyzes your data through two specialized agents:
  
 ---
 
-## 🔧 Dependencies & Technologies
+## 6. Dependencies & Technologies
 
 ### Core Dependencies
 
@@ -202,7 +201,7 @@ pypdf           # PDF processing utilities
 
 ---
 
-## 🤖 AI Architecture
+## 7. AI Architecture
 
 ### Gemini 2.0 Flash Integration
 
@@ -242,7 +241,7 @@ llm = LLM(
 
 ---
 
-## 📁 File Format Details
+## 8. File Format Details
 
 ### CSV Structure
 ```csv
@@ -289,7 +288,7 @@ Full transaction table and supporting data...
 
 ---
 
-## 🔧 Advanced Features
+## 9. Advanced Features
 
 ### Automatic File Management
 - **Cross-Platform Downloads Detection**: Windows, macOS, Linux support
@@ -338,7 +337,7 @@ python download_to_device.py all
 
 ---
 
-## 🐛 Troubleshooting
+## 10. Troubleshooting
 
 ### Common Issues
 
@@ -389,7 +388,7 @@ verbose = True  # In generate_report_from_csv.py
 
 ---
 
-## 🤝 Contributing
+## 11. Contributing
 
 ### Development Setup
 1. Fork the repository
@@ -417,7 +416,7 @@ python main_interface.py
 
 ---
 
-## 📚 Technical Resources
+## 12. Technical Resources
 
 ### Documentation Links
 - [CrewAI Documentation](https://docs.crewai.com/)
@@ -435,14 +434,12 @@ python main_interface.py
 
 --- 
 
-## 📄 License
-
+## 13. License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🔗 Quick Links
-
+## 14. Quick Links
 - **Google AI Studio**: [ai.google.dev](https://ai.google.dev)
 - **CrewAI Framework**: [crewai.com](https://crewai.com)
 - **Gemini 2.0 Flash**: [Google Blog](https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/)
@@ -450,8 +447,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🎯 Quick Start Commands
-
+## 15. Quick Start Commands
 ```bash
 # Clone and setup
 git clone https://github.com/your-username/finance-tracker.git
@@ -467,6 +463,8 @@ python main_interface.py
 # Download all files
 python download_to_device.py all
 ```
+
+---
 
 **Built with ❤️ using Python, AI, and lots of coffee ☕**
 

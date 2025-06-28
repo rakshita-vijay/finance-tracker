@@ -1,6 +1,6 @@
 # 💰 Personal Finance Tracker & AI Report Generator
 
-[![Python](https://img.g.shields.img.shieldse](https://img.shields.io/badge/Licensece tracker with AI-powered analysis and multi-format report generation. Built with Python, CrewAI, and Google's Gemini 2.0 Flash for intelligent financial insights.
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) tracker with AI-powered analysis and multi-format report generation. Built with Python, CrewAI, and Google's Gemini 2.0 Flash for intelligent financial insights.
 
 ## 🎯 Project Overview
 

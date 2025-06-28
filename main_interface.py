@@ -4,7 +4,7 @@ from core.budget_methods import get_budgets_list, changeBudget, displayBudget
 # from types_of_methods.csv_saver import save_as_csv
 # from types_of_methods.pdf_saver import save_as_pdf
 
-from download_to_device import download_file
+from download_to_device import download_file, delete_pychache
 
 from file_methods.csv_file_methods import display_csv_content, find_csv_file_location, get_trans_line_details, add_to_csv
 
@@ -238,15 +238,7 @@ def main():
 
   # Exit
   elif purpose_of_visit == 6:
-    for root, dirs, files in os.walk(os.getcwd()):
-      for dir_name in dirs:
-        if dir_name == "__pycache__":
-          pycache_path = os.path.join(root, dir_name)
-          try:
-            shutil.rmtree(pycache_path)
-            print(f"Deleted: {pycache_path}")
-          except Exception as e:
-            print(f"Error deleting {pycache_path}: {e}")
+    delete_pychache()
     print("Exiting...")
     sys.exit(1)
 
@@ -263,15 +255,7 @@ def main():
     print(l_only_line_demarcator)
     main()
   else:
-    for root, dirs, files in os.walk(os.getcwd()):
-      for dir_name in dirs:
-        if dir_name == "__pycache__":
-          pycache_path = os.path.join(root, dir_name)
-          try:
-            shutil.rmtree(pycache_path)
-          except Exception as e:
-            print(f"Error deleting {pycache_path}: {e}")
-
+    delete_pychache()
     print("Exiting...")
     sys.exit(1)
 

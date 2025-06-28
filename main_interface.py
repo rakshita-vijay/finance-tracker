@@ -8,13 +8,14 @@ from download_to_device import download_file
 
 from file_methods.csv_file_methods import display_csv_content, find_csv_file_location, get_trans_line_details, add_to_csv
 
-from file_methods.pdf_file_methods import find_pdf_file_location
 from file_methods.txt_file_methods import find_txt_file_location, update_txt_file, create_and_format_pretty_table
+
+from file_methods.pdf_file_methods import find_pdf_file_location
+from file_methods.md_file_methods import find_md_file_location
 
 from crewai_toolkits_gem_2point0_flash.generate_report_from_csv import gen_report
 
-# from prettytable import from_csv
-from prettytable import PrettyTable
+# from prettytable import from_csv, PrettyTable
 
 l_only_line_demarcator = "\n{}".format("~" * 120)
 r_only_line_demarcator = "{}\n".format("~" * 120)
@@ -66,8 +67,8 @@ def main():
 
   print(l_and_r_line_demarcator)
 
-  pretti_tabel = create_and_format_pretty_table()
-  update_txt_file(pretti_tabel)
+  global_pretti_tabel = create_and_format_pretty_table()
+  update_txt_file(global_pretti_tabel)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -130,6 +131,9 @@ def main():
       print("| Transactions successfully added into the csv file! :) |")
       print("-" * len("| Transactions successfully added into the csv file! :) |"))
 
+    global_pretti_tabel = create_and_format_pretty_table()
+    update_txt_file(global_pretti_tabel)
+
     print(l_only_line_demarcator)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -144,33 +148,42 @@ def main():
     curr_csv = find_csv_file_location()
 
     print("Transactions to date: ")
-    # display_csv_content(curr_csv)
+    display_csv_content(curr_csv)
 
     # with open(curr_csv, "r") as fp:
     #   table = from_csv(fp)
     #   table.align = "l"  # left align all columns
     #   print(table)
 
-    pt = create_and_format_pretty_table()
-    print(pt)
-    update_txt_file(pt)
+    # pt = create_and_format_pretty_table()
+    # print(pt)
+    # update_txt_file(pt)
 
-    print(l_and_r_line_demarcator)
+    print(r_only_line_demarcator)
     purpose_of_visit = 4
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   # Generate Report
   elif purpose_of_visit == 3:
-    rep_ch = input("Would you like to generate a report / analysis of your transactions? Enter 'y' for yes and 'n' for no: ")
-    while rep_ch.lower()[0] != 'y' and rep_ch.lower()[0] != 'n':
-      rep_ch = input("Invalid choice. Please enter 'y' for yes and 'n' for no: ")
+    # rep_ch = input("Would you like to generate a report / analysis of your transactions? Enter 'y' for yes and 'n' for no: ")
+    # while rep_ch.lower()[0] != 'y' and rep_ch.lower()[0] != 'n':
+    #   rep_ch = input("Invalid choice. Please enter 'y' for yes and 'n' for no: ")
 
-    if rep_ch.lower()[0] == 'y':
-      gen_report(find_csv_file_location())
+    # if rep_ch.lower()[0] == 'y':
+    new_md_path = gen_report()
 
-    # remove extra \n (account for it)
-    # ask if they want to download the report
+    print(l_and_r_line_demarcator)
+
+    d_md_or_not = input("Would you also like to download the .md file to the Downloads folder on your device? Enter 'y' for yes and 'n' for no: ")
+
+    if d_md_or_not.lower()[0] == 'y':
+      download_file(new_md_path)
+      print(l_only_line_demarcator)
+    else:
+      print()
+      print("Your .md file is available in the 'saved_files' directory.")
+      print(l_only_line_demarcator)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -217,9 +230,9 @@ def main():
 
     elif dl_or_not.lower()[0] == '4':
       pass
-      # emd_file_path = find_emd_file_location()
-      # print(l_only_line_demarcator)
-      # download_file(emd_file_path)
+      md_file_path = find_md_file_location()
+      print(l_only_line_demarcator)
+      download_file(md_file_path)
 
     elif dl_or_not.lower()[0] == '5':
       dl_fp = input("\nEnter file path or name in this directory: ")

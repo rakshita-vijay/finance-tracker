@@ -27,7 +27,7 @@ def download_file(file_to_download = None):
         break
 
     if exists == False:
-      print("Cannot download file as it doesn't exist :(")
+      print("\nCannot download file as it doesn't exist :(")
       print("Thus, downloading csv file :)")
       only_file_name = find_csv_file_location()
       extension = 'csv'

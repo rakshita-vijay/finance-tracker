@@ -80,23 +80,24 @@ finance-tracker/
 
 ## 4. Installation & Setup
 
-### Prerequisites
+### 🛠️ Prerequisites
 - **Python 3.8+** (Required for CrewAI and modern features)
 - **Google Cloud Account** (for Gemini API access)
 - **Terminal/Command Line** access
 
-### 1. Clone Repository
+### 🚀 Getting started
+(a) **Clone Repository**
 ```bash
 git clone https://github.com/your-username/finance-tracker.git
 cd finance-tracker
 ```
 
-### 2. Install Dependencies
+(b) **Install Dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Set Up Google Gemini API
+(c) **Set Up Google Gemini API**
 ```bash
 # Set your Google API key as environment variable
 export GOOGLE_API_KEY='your_api_key_here'
@@ -109,13 +110,13 @@ $env:GOOGLE_API_KEY="your_api_key_here"
 ```
 **Get your API key**: [Google AI Studio](https://ai.google.dev)
 
-### 4. Initialize Default Budget
+(d) **Initialize Default Budget**
 Edit `core/default_budget.txt`:
 ```
 monthly = 6000, yearly = 72000
 ```
 
-### 5. Set Up Test Data (Optional)
+(e) **Set Up Test Data (Optional)**
 Copy the contents from `saved_files/trial_csv_data` into `saved_files/csv_*.csv` for testing:
 ```csv
 S.NO,DATE,DESCRIPTION,AMOUNT,PAYMENT METHOD,STATUS,NOTES
@@ -124,12 +125,12 @@ S.NO,DATE,DESCRIPTION,AMOUNT,PAYMENT METHOD,STATUS,NOTES
 ...
 ```
 
-### 6. Run the Application
+(f) **Run the Application**
 ```bash
 python main_interface.py
 ```
 
-### 7. Download All Files
+(g) **Download All Files**
 ```bash
 python download_to_device.py all
 ``` 

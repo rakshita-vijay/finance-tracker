@@ -5,7 +5,6 @@
 ---
 
 ## 🎯 Project Overview
-
 This finance tracker combines traditional transaction logging with cutting-edge AI analysis to provide strategic financial insights. The system uses a **two-agent CrewAI architecture** powered by **Gemini 2.0 Flash** to analyze spending patterns, detect anomalies, and generate actionable financial recommendations.
 
 ### 🔥 Key Highlights
@@ -195,7 +194,7 @@ pypdf           # PDF processing utilities
 - `zipfile`, `shutil` - Archive and file operations
 - `re`, `math` - Pattern matching and calculations
 
-### AI \& Machine Learning
+### AI & Machine Learning
 
 - **Google Gemini 2.0 Flash** - Advanced language model
 - **CrewAI Framework** - Multi-agent orchestration

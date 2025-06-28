@@ -46,13 +46,14 @@ def main():
   print("3. Generate Report")
   print("4. Change Budget")
   print("5. Download Report / CSV file / other files")
-  print("6. Exit \n")
+  print("6. Wipe Transactions")
+  print("7. Exit \n")
 
   repeat = 'yes'
   purpose_of_visit = 0
-  while repeat == 'yes' or purpose_of_visit < 1 or purpose_of_visit > 6:
+  while repeat == 'yes' or purpose_of_visit < 1 or purpose_of_visit > 7:
     try:
-      purpose_of_visit = int(input(f"Enter a valid choice (1-6): "))
+      purpose_of_visit = int(input(f"Enter a valid choice (1-7): "))
       repeat = 'no'
     except ValueError as ve:
       repeat = 'yes'
@@ -124,8 +125,8 @@ def main():
       print("| Transactions successfully added into the csv file! :) |")
       print("-" * len("| Transactions successfully added into the csv file! :) |"))
 
-    global_pretti_tabel = create_and_format_pretty_table()
-    update_txt_file(global_pretti_tabel)
+    pretti_tabel = create_and_format_pretty_table()
+    update_txt_file(pretti_tabel)
 
     print(l_only_line_demarcator)
 
@@ -236,8 +237,25 @@ def main():
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  # Exit
+  # Wipe transactions
   elif purpose_of_visit == 6:
+    ch_wipe = input("Are you sure you want to wipe all your transaction history? Enter 'y' for yes and 'n' for no: ")
+
+    if ch_wipe.lower()[0] == 'y':
+      wipe_loc = find_csv_file_location()
+      with open(wipe_loc, "w", encoding='utf-8') as wipe_loc_wrtr:
+        csv_wiper = csv.writer(wipe_loc_wrtr)
+        csv_wiper.writerow(['S.NO','DATE','DESCRIPTION','AMOUNT','PAYMENT METHOD','STATUS','NOTES'])
+
+    pretti_tabel = create_and_format_pretty_table()
+    update_txt_file(pretti_tabel)
+
+    print(l_only_line_demarcator)
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  # Exit
+  elif purpose_of_visit == 7:
     delete_pychache()
     print("Exiting...")
     sys.exit(1)
@@ -256,6 +274,8 @@ def main():
     main()
   else:
     delete_pychache()
+    pretti_tabel = create_and_format_pretty_table()
+    update_txt_file(pretti_tabel)
     print("Exiting...")
     sys.exit(1)
 

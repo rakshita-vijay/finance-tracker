@@ -134,7 +134,7 @@ finance-tracker/
 
 ## 5. Usage Guide
 
-### (a) Main Menu Options
+### 🏠 Main Menu Options
   ```
   1. Add Transaction(s)    - Input new financial transactions
   2. View Spending         - Display transactions and budget status
@@ -145,7 +145,7 @@ finance-tracker/
   7. Exit                  - Clean up and terminate
   ``` 
 
-### (b) Transaction Fields
+### 💸 Transaction Fields
   | **Field** | **Description** | **Validation** |
   | :-- | :-- | :-- |
   | **S.NO** | Sequential number (auto-generated) | Auto-increment |
@@ -156,16 +156,16 @@ finance-tracker/
   | **STATUS** | Transaction status | Completed/Pending/Failed/Cancelled |
   | **NOTES** | Additional notes | <60 characters |
 
-### (c) Report Generation
+### 📊 Report Generation
   The AI system analyzes your data through two specialized agents:
   
-  **🧠 Agent 1: Transaction Data Conversion: CSV to ASCII Table**
+  **Agent 1: Transaction Data Conversion: CSV to ASCII Table**
   - **PrettyTable Generation**: AI-powered conversion from CSV to terminal-ready ASCII tables
   - **Two-Agent Quality Control**: Generator + Conformance checker for perfect formatting
   - **Dynamic Width Calculation**: Auto-sizing columns based on content length
   - **Terminal Optimization**: Clean ASCII output for command-line display
-  
-  **📊 Agent 2: Financial Strategy Consultant** 
+
+  **Agent 2: Financial Strategy Consultant** 
   - **Executive Strategy Brief**: Summarizes the most important and actionable financial insights from the analysis.
   - **Behavioral Segmentation Profiles**: Breaks down customer or user spending patterns into meaningful groups.
   - **Liquidity Risk Dashboard**: Presents clear metrics and warnings about cash flow health and potential shortfalls.
@@ -176,7 +176,7 @@ finance-tracker/
 
 ## 6. Dependencies & Technologies
 
-### (a) Core Dependencies 
+### ⚙️ Core Dependencies 
   ```txt
   crewai          # Multi-agent AI framework
   prettytable     # ASCII table formatting
@@ -184,13 +184,13 @@ finance-tracker/
   pypdf           # PDF processing utilities
   ```
 
-### (b) Built-in Libraries Used 
+### 🏛️ Built-in Libraries Used 
   - `os`, `sys`, `csv` - File system operations
   - `datetime`, `time` - Timestamp management
   - `zipfile`, `shutil` - Archive and file operations
   - `re`, `math` - Pattern matching and calculations
 
-### (c) AI & Machine Learning 
+### 🤖 AI & Machine Learning 
   - **Google Gemini 2.0 Flash** - Advanced language model
   - **CrewAI Framework** - Multi-agent orchestration
   - **LiteLLM Integration** - Model provider abstraction
@@ -199,14 +199,14 @@ finance-tracker/
 
 ## 7. AI Architecture
 
-### (i) Gemini 2.0 Flash Integration 
+### ⚡ Gemini 2.0 Flash Integration 
   This project leverages Google's latest **Gemini 2.0 Flash** model for: 
   - **Enhanced Performance**: 2x faster than Gemini 1.5 Pro 
   - **Native Tool Calling**: Direct integration with Python functions
   - **Advanced Reasoning**: Complex financial pattern analysis
   - **Cost Efficiency**: Optimized for high-volume operations
 
-### (ii) CrewAI Multi-Agent System 
+### 🦾 CrewAI Multi-Agent System 
   ```mermaid
   flowchart LR
       Aa[(Transaction Data)] -.-> Ab[Intelligence Analyst]
@@ -227,14 +227,14 @@ finance-tracker/
 
 ## 8. File Format Details
 
-### (a) CSV Structure
+### 🔡 CSV Structure
   ```csv
   S.NO,DATE,DESCRIPTION,AMOUNT,PAYMENT METHOD,STATUS,NOTES
   01,28/06/2025,Groceries at SuperMart,45.75,Credit Card,Completed,Weekly shopping
   02,29/06/2025,Coffee at Starbucks,5.25,Cash,Completed,Morning coffee
   ```
 
-### (b) ASCII Table Output (PrettyTable)
+### 🧮 ASCII Table Output (PrettyTable)
   ```
   +------+------------+----------------------+--------+----------------+-----------+------------------+
   | S.NO |    DATE    |     DESCRIPTION      | AMOUNT | PAYMENT METHOD |  STATUS   |      NOTES       |
@@ -244,7 +244,7 @@ finance-tracker/
   +------+------------+----------------------+--------+----------------+-----------+------------------+
   ```
 
-### (c) AI Report Structure (Markdown)
+### 📝 AI Report Structure (Markdown)
   ```markdown
   # Financial Analysis Report
   
@@ -290,7 +290,7 @@ flowchart TD
 
 ## 10. Advanced Features
 
-### (a) Automatic File Management
+### 📄 Automatic File Management
   - **Cross-Platform Downloads Detection**: Windows, macOS, Linux support
   - **Timestamp Synchronization**: All files maintain consistent naming `format_DD_MM_YYYY_HH_MM_SS.format`
   - **Format Conversion Pipeline**: 
@@ -304,7 +304,7 @@ flowchart TD
     - Temporary zip file deletion
     - Session cleanup on exit
 
-### (b) Budget Analysis Engine
+### 💱 Budget Analysis Engine
   - **Real-Time Monitoring**: Instant budget threshold detection
   - **Recovery Strategy Generation**: 
     - **Plan A**: Full deduction from next month's budget
@@ -313,7 +313,7 @@ flowchart TD
   - **Category-Specific Analysis**: Spending breakdown by transaction type
   - **Impact Assessment**: Overspend effects on annual savings goals
 
-### (c) File Download System
+### 🔗 File Download System
   ```bash
   # Download specific files
   python download_to_device.py filename.csv
@@ -322,12 +322,12 @@ flowchart TD
   python download_to_device.py all
   ```
 
-  **Features:**
+  **Features:** 
   - Automatic zip compression for non-CSV files 
   - Exclusion of system files (`.git`, `__pycache__`, `README`)
   - Progress feedback and error handling
 
-### (d) Data Validation & Error Handling
+### 🎭 Data Validation & Error Handling
   - **Date Parsing**: Multiple format support (MM/DD/YYYY, MM-DD-YYYY, etc.)
   - **Amount Validation**: Float parsing with negative value support
   - **Status Validation**: Enum-based validation for transaction status
@@ -389,7 +389,7 @@ flowchart TD
 
 ## 12. Contributing
 
-### (a) Development Setup
+### 📲 Development Setup
   1. Fork the repository
   2. Create feature branch: `git checkout -b feature/amazing-feature`
   3. Install development dependencies: `pip install -r requirements.txt`
@@ -398,31 +398,31 @@ flowchart TD
   6. Push to branch: `git push origin feature/amazing-feature`
   7. Open Pull Request
 
-### (b) Code Style Guidelines
+### ✍🏼 Code Style Guidelines
   - Follow PEP 8 guidelines for Python code
   - Use descriptive variable names (`curr_csv_path` not `cp`)
   - Add docstrings for complex functions
   - Maintain modular architecture with clear separation
   - Test with provided `trial_csv_data` before submitting
 
-### (c) Testing
+### 🔬 Testing
   Copy the contents from `saved_files/trial_csv_data` into `saved_files/csv_*.csv` 
 
 ---
 
 ## 13. Technical Resources
 
-### Documentation Links
+### </> Documentation Links
 - [CrewAI Documentation](https://docs.crewai.com/)
 - [Google Gemini API Guide](https://ai.google.dev/docs)
 - [PrettyTable Documentation](https://pypi.org/project/prettytable/)
 - [FPDF User Manual](https://pyfpdf.readthedocs.io/)
 
-### Research Papers & Articles
+### 🎓 Research Papers & Articles
 - [Multi-Agent Systems in Finance](https://arxiv.org/abs/2301.07515)
 - [LLM Applications in Financial Analysis](https://arxiv.org/abs/2310.12659)
 
-### Example Implementations
+### 🎨 Example Implementations
 - [Personal Finance Tracker Examples](https://github.com/Firdous2307/personal-finance-tracker)
 - [CrewAI Multi-Agent Examples](https://github.com/DAEM007/finance-tracker-project)
 

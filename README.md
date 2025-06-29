@@ -214,19 +214,20 @@ finance-tracker/
 ### (ii) CrewAI Multi-Agent System   
   Second Agent's Workflow:
   ```mermaid
-  graph LR
-      A[Transaction Data] --> B[Intelligence Analyst]
-      B --> C[Strategy Consultant]
-      C --> D[Final Report]
-      
-      B1[Pattern Detection] --> B
-      B2[Anomaly Analysis] --> B
-      B3[Budget Analysis] --> B
-      
-      C --> C1[Recovery Plans]
-      C --> C2[Recommendations]
-      C --> C3[Risk Assessment]
-  ```
+  flowchart LR
+      Aa[(Transaction Data)] -.-> Ab[Intelligence Analyst]
+      Ac[(Budgets)] -.-> Ab 
+      Ab -.-> A[/Analysis Results/]
+      A -.-> Ba[Strategy Consultant Agent]
+      Ba -.-> B[/Final Report/] 
+      B --> C[Executive Summary]
+      B --> D[Behavioral Segmentation Profiles]
+      B --> E[Liquidity Risk Dashboard]
+      B --> F[Fraud Network Mapping]
+      B --> G[Expense Optimization Plan]
+      B --> H[Budget Recovery Roadmap]
+      B --> I[Appendix: Full Transaction Table] 
+  ``` 
 
 ---
 

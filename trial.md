@@ -1,5 +1,5 @@
 ```mermaid
-flowchart TD
+flowchart LR
     Aa[(Transaction Data)] -.-> Ab[Intelligence Analyst]
     Ac[(Budgets)] -.-> Ab 
     Ab -.-> A[/Analysis Results/]

@@ -211,75 +211,7 @@ finance-tracker/
   - **Advanced Reasoning**: Complex financial pattern analysis
   - **Cost Efficiency**: Optimized for high-volume operations
 
-### (ii) CrewAI Multi-Agent System 
-  ```mermaid
-  flowchart LR
-      A[CSV Data] --> B[Table Generator]
-      B --> C[Conformance Checker]
-      C -->|Valid ASCII Table| D[Intelligence Analyst]
-      C -->|Invalid| B
-      D --> E[Strategy Consultant]
-      E --> F[Final Report]
-  
-      subgraph CSV_to_ASCII["Stage 1: CSV to ASCII"]
-          B["Agent: Table Generator
-          - PrettyTable Generation
-          - Dynamic Width Calculation
-          - Terminal Optimization"]
-          C["Agent: Conformance Checker
-          - Validate Pipe/Dash Usage
-          - Check Column Alignment
-          - Verify Width Compliance"]
-      end
-  
-      subgraph Analysis_Report["Stage 2: Financial Analysis"]
-          D["Agent: Intelligence Analyst
-          - Cash Flow Trends
-          - Behavioral Segmentation
-          - Fraud Detection
-          - Budget Analysis"]
-          E["Agent: Strategy Consultant
-          - Executive Summary
-          - Risk Dashboard
-          - Recovery Roadmap
-          - Optimization Plans"]
-      end
-  ```
-  
----
-  
-```mermaid
-flowchart TD
-    A[(CSV Data)] --> B[transform_csv_to_md_table.py]
-    A --> Aa([".csv Download"])
-    C --> Ca([".txt Download"])
-    Ca --> Cb([".pdf Download"])
-    C[/ASCII Table Output/] --> D[generate_report_from_csv.py]
-    E[(Budgets)] --> D
-    F[/Final Markdown Report/]
-    F --> Fa([".md Download"])
- 
-    subgraph Stage1 ["Stage 1: CSV to ASCII"]
-        B1[Table Generator Agent]
-        B2[Conformer Agent]
-        B1 --> B2
-        B2 --> B3{Validation}
-        B3 -->| No | B1 
-    end
-
-    subgraph Stage2 ["Stage 2: Analysis&Reporting"]
-        D1[Intelligence Analyst Agent]
-        D2[Strategy Consultant Agent]
-        D1 --> D2
-    end
-
-    B -.-> Stage1
-    D -.-> Stage2
-    B3 -.->| Yes | C
-    D2 -.-> F 
-```
-
----
+### (ii) CrewAI Multi-Agent System   
   Second Agent's Workflow:
   ```mermaid
   graph LR
@@ -330,38 +262,33 @@ flowchart TD
 ## 9. Workflow
 ```mermaid
 flowchart TD
-    A[CSV Transaction Data] --> B[transform_csv_to_md_table.py]
-    B --> C[Table Generator Agent]
-    C --> D[Conformer Agent]
-    D -->| Valid? | E{Validation}
-    E -->| No | C
-    E -->| Yes | F[ASCII Table Output]
-    F --> G[generate_report_from_csv.py]
-    G --> H[Intelligence Analyst Agent]
-    H --> I[Strategy Consultant Agent]
-    I --> J[Final Markdown Report]
-    K[Budget Data] --> G
-
-    subgraph Stage1["Stage 1: CSV to ASCII Conversion"]
-        B --> C
-        C --> D
-        D --> E
+    A[(CSV Data)] --> B[transform_csv_to_md_table.py]
+    A --> Aa([".csv Download"])
+    C --> Ca([".txt Download"])
+    Ca --> Cb([".pdf Download"])
+    C[/ASCII Table Output/] --> D[generate_report_from_csv.py]
+    E[(Budgets)] --> D
+    F[/Final Markdown Report/]
+    F --> Fa([".md Download"])
+ 
+    subgraph Stage1 ["Stage 1: CSV to ASCII"]
+        B1[Table Generator Agent]
+        B2[Conformer Agent]
+        B1 --> B2
+        B2 --> B3{Validation}
+        B3 -->| No | B1 
     end
 
-    subgraph Stage2["Stage 2: Financial Analysis & Reporting"]
-        G --> H
-        H --> I
-        I --> J
+    subgraph Stage2 ["Stage 2: Analysis&Reporting"]
+        D1[Intelligence Analyst Agent]
+        D2[Strategy Consultant Agent]
+        D1 --> D2
     end
 
-    subgraph FileOperations["File Operations"]
-        J --> M[Save to saved_files/]
-        M --> N[Auto-update PDF/TXT]
-    end
-
-    style Stage1 fill:#e6f7ff,stroke:#333
-    style Stage2 fill:#ffe6e6,stroke:#333
-    style FileOperations fill:#f0f9eb,stroke:#333
+    B -.-> Stage1
+    D -.-> Stage2
+    B3 -.->| Yes | C
+    D2 -.-> F 
 ```
 
 ---

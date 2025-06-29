@@ -130,11 +130,6 @@ finance-tracker/
   python main_interface.py
   ```
 
-(g) **Download All Files (Optional)**
-  ```bash
-  python download_to_device.py all
-  ``` 
-
 ---
 
 ## 5. Usage Guide
@@ -211,8 +206,7 @@ finance-tracker/
   - **Advanced Reasoning**: Complex financial pattern analysis
   - **Cost Efficiency**: Optimized for high-volume operations
 
-### (ii) CrewAI Multi-Agent System   
-  Second Agent's Workflow:
+### (ii) CrewAI Multi-Agent System 
   ```mermaid
   flowchart LR
       Aa[(Transaction Data)] -.-> Ab[Intelligence Analyst]
@@ -344,7 +338,7 @@ flowchart TD
 
 ## 11. Troubleshooting
 
-### (a) 🚨 Common Issues
+### 🚨 Common Issues
 
   - **Google API Key Error**
     ```
@@ -379,13 +373,13 @@ flowchart TD
     ```
     **Solution**: Ensure terminal supports UTF-8 encoding or use ASCII-only characters
 
-### (b) 📈 Performance Optimization Tips
+### 📈 Performance Optimization Tips
   - Keep CSV files under 1000 transactions for optimal AI processing
   - Use SSD storage for faster file operations
   - Close other applications during report generation
   - Set terminal encoding to utf-8 for proper table display
 
-### (c) 🪲 Debug Mode
+### 🪲 Debug Mode
   Enable verbose logging by modifying agent settings:
   ```python
   verbose = True  # In generate_report_from_csv.py

@@ -2,7 +2,7 @@
 flowchart LR
     Aa[(Transaction Data)] -.-> Ab[Intelligence Analyst]
     Ac[(Budgets)] -.-> Ab 
-    Ab -.-> A[/Analysis Results/]
+    Ab -.-> A[/Extracted Data/]
     A -.-> Ba[Strategy Consultant Agent]
     Ba -.-> B[/Final Report/] 
     B --> C[Executive Summary]

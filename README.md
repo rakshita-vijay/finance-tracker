@@ -435,6 +435,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Built with ❤️ using Python, AI, and lots of coffee ☕** 
 
-**🌟 Star this repo if it helped you manage your finances better!**  
-
----
+**🌟 Star this repo if it helped you manage your finances better!**   
